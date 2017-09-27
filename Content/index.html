@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cover Letter App</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-app="CoverLetterApp" ng-controller="letterController as vm" class="container">
+        <h1>Make your own cover letter</h1>
+        <label for="jobUrl">Enter a job posting URL:</label>
+        <input class="form-control" ng-model="vm.data.url" />
+        <button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
+        <pre>{{vm.data | json}}</pre>
+
+        <div class="col-sm-12 well" ng-repeat="job in vm.jobInfo">
+            <h1 class="bg-primary">Cover letter for {{job.title}}, {{job.company}}</h1>
+            <p>Greetings {{job.company}},
+            <br />
+            I am applying for the {{job.title}} position. 
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-md-6">Qualifications for {{job.title}}</th>
+                        <th class="col-md-6">How I Qualify</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="quals in job.quals">
+                        <td>{{quals}} </td>
+                        <td>other things</td>
+                    </tr>
+                </tbody>
+                </table>
+                <!--<table>
+            <tbody>
+                <tr ng-repeat="quals in job.quals">
+                    <td>{{quals}}</td>
+                </tr>
+                <tr ng-repeat="quals in job.quals">
+                    <td>{{quals}}</td>
+                </tr>
+            </tbody>
+        </table>-->
+                <!--<ul>
+            <li ng-repeat="quals in job.quals">{{quals}}</li>
+        </ul>-->
+
+</div>
+
+    </div>
+    <script src="../Scripts/jquery-3.2.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="js/module.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/service.js"></script>
+</body>
+</html>
