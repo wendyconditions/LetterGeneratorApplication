@@ -9,7 +9,6 @@
 
     function letterController(coverLetterService) {
         var vm = this;
-        //vm.$onInit = _init;
         vm.data = {};
         vm.otherInfo = [];
         vm.btnUrl = _btnUrl;

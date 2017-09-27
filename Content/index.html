@@ -11,13 +11,41 @@
         <label for="jobUrl">Enter a job posting URL:</label>
         <input class="form-control" ng-model="vm.data.url" />
         <button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
-        <pre>{{vm.data | json}}</pre>
 
         <div class="col-sm-12 well" ng-repeat="job in vm.jobInfo">
-            <h1 class="bg-primary">Cover letter for {{job.title}}, {{job.company}}</h1>
-            <p>Greetings {{job.company}},
+            <h1 class="bg-primary">Cover letter for {{job.title}}, {{job.company}}</h1><br /><br /><br />
+            <p><strong>Greetings {{job.company}},</strong><p>
             <br />
-            I am applying for the {{job.title}} position. 
+            <p>
+            In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.
+            </p>
+            <p>
+                I have over 2 years of practical front-end web developement experience and knowledge of full stack web development. I am looking to leverage my knowledge and passion of computer programming, design, and technology into a Web Development role similar to this position at {{job.company}}. I have created front-end responsive websites, single-page applications, and I am well versed in the request response life cycle.
+            </p>
+            <p>
+                Here are a couple projects I recently worked on that I feel are relevant to the qualifications you desire.
+                <ul>
+                    <li><a href="https://blakwealth.azurewebsites.net/">https://blakwealth.azurewebsites.net</a>
+                        (AngularJS, C#/.NET, SQL Server, AJAX, JSON, WebAPI, S3)
+                        Set up all environments, custom filters, components, services, stored procedures, etc.
+                    </li>
+
+                    <li><a href="https://wendyconditions.github.io/OpenMicNightProject">https://wendyconditions.github.io/OpenMicNightProject</a>
+                        (Bootstrap, CSS, HTML, JS, and jQuery)
+                        Basic responsive website, design, SVG graphics and animation
+                    </li>
+                    <li><a href="https://wendyconditions.herokuapp.com/">https://wendyconditions.herokuapp.com</a>
+                        I also have a personal website showcasing some additional work:
+                        
+                    </li>
+                    <li><a href="https://github.com/wendyconditions">https://github.com/wendyconditions</a>
+                        also a Github where I have some additional applications:
+                        
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Please reference my resume for more details. I hope to discuss my qualifications and previous projects with you. I am confident blah blah bblah. 
             </p>
             <table class="table table-bordered">
                 <thead>
