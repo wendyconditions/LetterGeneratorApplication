@@ -7,52 +7,52 @@
 </head>
 <body>
     <div ng-app="CoverLetterApp" ng-controller="letterController as vm" class="container">
+        <!-- Need to add bootstrap rows, format html -->
         <h1>Make your own cover letter</h1>
-        <label for="jobUrl">Enter a job posting URL:</label>
+
+        <label for="jobUrl">Enter a job posting URL from Indeed:</label>
         <input class="form-control" ng-model="vm.data.url" />
         <button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
 
+        <!--This will eventually be layed out properly, with a heading indicating job followed by a full cover letter
+        that can be exported to word or doc program-->
         <div class="col-sm-12 well" ng-repeat="job in vm.jobInfo">
             <h1 class="bg-primary">Cover letter for {{job.title}}, {{job.company}}</h1><br /><br /><br />
             <p><strong>Greetings {{job.company}},</strong><p>
-            <br />
-            <p>
-            In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.
-            </p>
-            <p>
-                I have over 2 years of practical front-end web developement experience and knowledge of full stack web development. I am looking to leverage my knowledge and passion of computer programming, design, and technology into a Web Development role similar to this position at {{job.company}}. I have created front-end responsive websites, single-page applications, and I am well versed in the request response life cycle.
-            </p>
+                <br />
+            <p>In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>
                 Here are a couple projects I recently worked on that I feel are relevant to the qualifications you desire.
                 <ul>
-                    <li><a href="https://blakwealth.azurewebsites.net/">https://blakwealth.azurewebsites.net</a>
+                    <li>
+                        <a href="https://blakwealth.azurewebsites.net/">https://blakwealth.azurewebsites.net</a>
                         (AngularJS, C#/.NET, SQL Server, AJAX, JSON, WebAPI, S3)
-                        Set up all environments, custom filters, components, services, stored procedures, etc.
+                        Set up all environments, custom filters, components, services, stored procedures, etc
                     </li>
-
-                    <li><a href="https://wendyconditions.github.io/OpenMicNightProject">https://wendyconditions.github.io/OpenMicNightProject</a>
+                    <li>
+                        <a href="https://wendyconditions.github.io/OpenMicNightProject">https://wendyconditions.github.io/OpenMicNightProject</a>
                         (Bootstrap, CSS, HTML, JS, and jQuery)
                         Basic responsive website, design, SVG graphics and animation
                     </li>
-                    <li><a href="https://wendyconditions.herokuapp.com/">https://wendyconditions.herokuapp.com</a>
-                        I also have a personal website showcasing some additional work:
-                        
+                    <li>
+                        <a href="https://wendyconditions.herokuapp.com/">https://wendyconditions.herokuapp.com</a>
+                        I also have a personal website showcasing some additional work
                     </li>
-                    <li><a href="https://github.com/wendyconditions">https://github.com/wendyconditions</a>
-                        also a Github where I have some additional applications:
-                        
+                    <li>
+                        <a href="https://github.com/wendyconditions">https://github.com/wendyconditions</a>
+                        also a Github where I have some additional applications
                     </li>
                 </ul>
             </p>
-            <p>
-                Please reference my resume for more details. I hope to discuss my qualifications and previous projects with you. I am confident blah blah bblah. 
-            </p>
+            <p> Please reference my resume for more details. I hope to discuss my qualifications and previous projects with you. I am confident blah blah bblah.</p>
+
+            <!--Display generated cover letter-->
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th class="col-md-6">Qualifications for {{job.title}}</th>
                         <th class="col-md-6">How I Qualify</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
@@ -61,24 +61,10 @@
                         <td>other things</td>
                     </tr>
                 </tbody>
-                </table>
-                <!--<table>
-            <tbody>
-                <tr ng-repeat="quals in job.quals">
-                    <td>{{quals}}</td>
-                </tr>
-                <tr ng-repeat="quals in job.quals">
-                    <td>{{quals}}</td>
-                </tr>
-            </tbody>
-        </table>-->
-                <!--<ul>
-            <li ng-repeat="quals in job.quals">{{quals}}</li>
-        </ul>-->
-
-</div>
-
+            </table>
+        </div>
     </div>
+    <!--Scripts-->
     <script src="../Scripts/jquery-3.2.1.js"></script>
     <script src="../Scripts/bootstrap.js"></script>
     <script src="../Scripts/angular.js"></script>

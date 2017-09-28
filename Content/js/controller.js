@@ -23,21 +23,19 @@
         vm.jobInfo = [];
 
         function _btnUrlSuccess(response) {
-
             for (var i = 0; i < response.data.job.length; i++) {
                 var jobData = {
                     title: response.data.job[i].title
                     , company: response.data.job[i].company
                     , quals: response.data.job[i].quals
                 };
-               vm.jobInfo.push(jobData);
+                vm.jobInfo.push(jobData);
             }
-            console.log(vm.jobInfo);
         }
 
         function _btnUrlError() {
-            console.log("api error");
+            // Need to handle this error properly, alert service 
+            console.log("Error");
         }
     }
-
 })();
