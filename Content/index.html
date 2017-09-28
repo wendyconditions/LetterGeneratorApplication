@@ -15,7 +15,7 @@
         <button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
 
         <!--This will eventually be layed out properly, with a heading indicating job followed by a full cover letter
-        that can be exported to word or doc program-->
+        that can be exported to word or doc program, also adding bootstrap rows-->
         <div class="col-sm-12 well" ng-repeat="job in vm.jobInfo">
             <h1 class="bg-primary">Cover letter for {{job.title}}, {{job.company}}</h1><br /><br /><br />
             <p><strong>Greetings {{job.company}},</strong><p>
