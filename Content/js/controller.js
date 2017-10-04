@@ -10,8 +10,8 @@
     function letterController(coverLetterService) {
         var vm = this;
         vm.data = {};
-        vm.otherInfo = [];
         vm.btnUrl = _btnUrl;
+        vm.jobInfo = [];
 
         ///////////////
 
@@ -20,18 +20,40 @@
             vm.data = {};
         }
 
-        vm.jobInfo = [];
 
         function _btnUrlSuccess(response) {
-            for (var i = 0; i < response.data.job.length; i++) {
-                var jobData = {
-                    title: response.data.job[i].title
-                    , company: response.data.job[i].company
-                    , quals: response.data.job[i].quals
+            var allQualIndex = response.data.job[0].quals; 
+            var obj = {
+                company: response.data.job[0].company,
+                title: response.data.job[0].title,
+                quals: []
+            };
+
+            for (var k = 0; k < allQualIndex.length; k++) {
+                var qualifications = {
+                    x: allQualIndex[k],
+                    y: []
                 };
-                vm.jobInfo.push(jobData);
+                obj.quals.push(qualifications);
             }
+            console.log(obj);
         }
+
+        // I might need this for later, WIP
+
+        //for (var i = 0; i < response.data.job.length; i++) {
+        //    var specs = response.data.job[i].quals;
+        //    for (var k = 0; k < specs.length; k++) {
+        //        if (String(specs[k]).match(/HTML/, 'g')) {
+        //            qualifications.push(specs[k]);
+        //        } else if (String(specs[k]).match(/responsive design/, 'g')) {
+        //            qualifications.push(specs[k]);
+        //        } 
+        //    }
+        //    console.log(qualifications);
+        //}
+
+
 
         function _btnUrlError() {
             // Need to handle this error properly, alert service 
