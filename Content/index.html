@@ -56,9 +56,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="quals in job.quals.match">
-                        <td>{{quals}} </td>
-                        <td>other things</td>
+                    <tr ng-repeat="quals in job.quals">
+                        <td>{{quals.qual}} </td>
+                        <td>{{quals.match}}</td>
                     </tr>
                 </tbody>
             </table>
