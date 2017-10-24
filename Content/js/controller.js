@@ -38,9 +38,21 @@
 
 
             for (var i = 0; i < obj.quals.length; i++) {
-                var sass = "i am good at sass";
+                var sass = "I am good at Sass";
+                var html = "10+ years of HTML5 and CSS3 experience";
+                var angular = "Equivalent of 2 years professional experience in AngularJS";
+                var sql = "Equivalent of 2 years professional T-SQL experience using Microsoft SQL Server/ Studio Mangement";
+                var css = "My css is excellent";
                 if (String(obj.quals[i].qual).match(/SASS/, 'g')) {
                     obj.quals[i].match = sass;
+                } else if (String(obj.quals[i].qual).toLowerCase().match(/html/, 'g')) {
+                    obj.quals[i].match = html;
+                } else if (String(obj.quals[i].qual).toLowerCase().match(/angular/, 'g')) {
+                    obj.quals[i].match = angular;
+                } else if (String(obj.quals[i].qual).toLowerCase().match(/CSS/, 'g')) {
+                    obj.quals[i].match = css;
+                } else if (String(obj.quals[i].qual).toLowerCase().match(/sql/, 'g')) {
+                    obj.quals[i].match = sql;
                 } else {
                     obj.quals[i].match = null;
                 }
