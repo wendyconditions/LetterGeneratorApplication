@@ -11,8 +11,6 @@
         var vm = this;
         vm.data = {};
         vm.btnUrl = _btnUrl;
-        vm.jobInfo = [];
-
         ///////////////
 
         function _btnUrl(url) {
@@ -20,9 +18,10 @@
             vm.data = {};
         }
 
+        vm.jobInfo = [];
 
         function _btnUrlSuccess(response) {
-            var allQualIndex = response.data.job[0].quals; 
+            var allQualIndex = response.data.job[0].quals;
             var obj = {
                 company: response.data.job[0].company,
                 title: response.data.job[0].title,
@@ -31,12 +30,13 @@
 
             for (var k = 0; k < allQualIndex.length; k++) {
                 var qualifications = {
-                    x: allQualIndex[k],
-                    y: []
+                    qual: allQualIndex[k],
+                    match: []
                 };
                 obj.quals.push(qualifications);
             }
-            console.log(obj);
+            vm.jobInfo.push(obj);
+            console.log(vm.jobInfo);
         }
 
         // I might need this for later, WIP
