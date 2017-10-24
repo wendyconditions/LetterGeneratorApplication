@@ -40,7 +40,9 @@
             for (var i = 0; i < obj.quals.length; i++) {
                 var sass = "i am good at sass";
                 if (String(obj.quals[i].qual).match(/SASS/, 'g')) {
-                    obj.quals[i].match.push(sass);
+                    obj.quals[i].match = sass;
+                } else {
+                    obj.quals[i].match = null;
                 }
             }
 
