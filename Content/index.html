@@ -21,9 +21,22 @@
             <div class="col-sm-12">
                 <div class="color1">
                     <h1>Make your own cover letter</h1>
-                    <label for="jobUrl">Enter a job posting URL from Indeed:</label>
-                    <input class="form-control" ng-model="vm.data.url" />
-                    <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
+                    <form>
+                        <div class="form-group">
+                            <label for="jobUrl">Enter a job posting URL from Indeed:</label>
+                            <input class="form-control" ng-model="vm.data.url" />
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Job Experience:</label>
+                            <input class="form-control" ng-model="vm.data.url" />
+                        </div>
+                        <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
+                        <div class="form-group">
+                            <label for="keywords">Keywords to look for:</label>
+                            <input type="text" class="form-control" name="keywords" ng-model="$ctrl.edit.contentTopics" bw-init-tags-input="reloadTagInputs" ng-required="true" placeholder="Add a keyword" />     
+                        </div>
+                        <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
+                    </form>
                 </div>
             </div>
         </div>
