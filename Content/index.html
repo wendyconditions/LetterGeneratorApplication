@@ -19,13 +19,15 @@
                             <label for="jobUrl">Enter a job posting URL from Indeed:</label>
                             <input class="form-control" ng-model="vm.data.url" />
                         </div>
+                        <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
+                        <label for="tags">Enter Keywords:</label>
+                        <tags-input ng-model="vm.formInfo.tags" use-strings="true"></tags-input>
+                        <br />
                         <div class="form-group">
                             <label for="experience">Job Experience:</label>
-                            <input class="form-control" ng-model="vm.data.exp" />
+                            <input class="form-control" ng-model="vm.formInfo.exp" />
                         </div>
-                        <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
-                        <tags-input ng-model="vm.data.tags" use-strings="true"></tags-input>
-                        <pre>{{vm.data.tags | json}}</pre>
+                        <pre>{{vm.formInfo | json}}</pre>
 
                         <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
                     </form>

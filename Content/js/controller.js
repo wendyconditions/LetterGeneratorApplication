@@ -11,7 +11,8 @@
         var vm = this;
         vm.data = {};
         vm.btnUrl = _btnUrl;
-        vm.tags = null;
+        vm.formInfo = null;
+        vm.jobInfo = [];
 
         ///////////////
 
@@ -19,8 +20,6 @@
             coverLetterService.getJobData(url).then(_btnUrlSuccess, _btnUrlError);
             vm.data = {};
         }
-
-        vm.jobInfo = [];
 
         function _btnUrlSuccess(response) {
             var allQualIndex = response.data.job[0].quals;
@@ -38,21 +37,28 @@
                 obj.quals.push(qualifications);
             }
 
-            for (var i = 0; i < obj.quals.length; i++) {
-                var sass = "I am good at Sass";
-                var html = "Experience developing in HTML, CSS, and JavaScript, specifically jQuery libraries";
-                var angular = "Equivalent of 2 years professional experience in AngularJS";
-                var sql = "Equivalent of 2 years professional T-SQL experience using Microsoft SQL Server/ Studio Mangement";
-                var css = "My css is excellent";
-                var js = "Fluent in JavaScript, ES5, ES6";
-                var slack = "Created custom slack bots";
-                var git = "Used GitHub and Git for version control on most projects";
-                var jquery = "2+ years experience with javascript libraries";
+            var sass = "I am good at Sass";
+            var html = "Experience developing in HTML, CSS, and JavaScript, specifically jQuery libraries";
+            var angular = "Equivalent of 2 years professional experience in AngularJS";
+            var sql = "Equivalent of 2 years professional T-SQL experience using Microsoft SQL Server/ Studio Mangement";
+            var css = "My css is excellent";
+            var js = "Fluent in JavaScript, ES5, ES6";
+            var slack = "Created custom slack bots";
+            var git = "Used GitHub and Git for version control on most projects";
+            var jquery = "2+ years experience with javascript libraries";
 
+            // Work in progress, successfully matched form data to query, next will be to add multiple, using a for loop
+            // and possible recursion. Then I will delete anything that is hard coded. wooo!
+
+            var keyword = vm.formInfo.tags;
+            var experience = vm.formInfo.exp;
+            
+
+            for (var i = 0; i < obj.quals.length; i++) {
                 if (String(obj.quals[i].qual).match(/SASS/, 'g')) {
                     obj.quals[i].match = sass;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/html/, 'g')) {
-                    obj.quals[i].match = html;
+                } else if (String(obj.quals[i].qual).toLowerCase().match(keyword, 'g')) {
+                    obj.quals[i].match = experience;
                 } else if (String(obj.quals[i].qual).toLowerCase().match(/angular/, 'g')) {
                     obj.quals[i].match = angular;
                 } else if (String(obj.quals[i].qual).toLowerCase().match(/css/, 'g')) {
