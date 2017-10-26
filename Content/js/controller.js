@@ -11,6 +11,7 @@
         var vm = this;
         vm.data = {};
         vm.btnUrl = _btnUrl;
+        vm.tags = null;
 
         ///////////////
 
@@ -75,6 +76,20 @@
         function _btnUrlError() {
             // Need to handle this error properly, alert service 
             console.log("Error");
+        }
+    }
+})();
+
+(function () {
+    "use strict";
+    angular.module("CoverLetterApp")
+        .directive("bwInitTagsInput", bwInitTagsInput);
+
+    bwInitTagsInput.$inject = ['$timeout'];
+
+    function bwInitTagsInput($timeout) {
+        return {
+            restrict: "A",
         }
     }
 })();

@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>Cover Letter App</title>
     <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/ng-tags-input.min.css" rel="stylesheet" />
+    <link href="css/ng-tags-input.bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -19,13 +21,12 @@
                         </div>
                         <div class="form-group">
                             <label for="experience">Job Experience:</label>
-                            <input class="form-control" ng-model="vm.data.url" />
+                            <input class="form-control" ng-model="vm.data.exp" />
                         </div>
                         <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
-                        <div class="form-group">
-                            <label for="keywords">Keywords to look for:</label>
-                            <input type="text" class="form-control" name="keywords" ng-model="$ctrl.edit.contentTopics" bw-init-tags-input="reloadTagInputs" ng-required="true" placeholder="Add a keyword" />     
-                        </div>
+                        <tags-input ng-model="vm.data.tags" use-strings="true"></tags-input>
+                        <pre>{{vm.data.tags | json}}</pre>
+
                         <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
                     </form>
                 </div>
@@ -99,5 +100,6 @@
     <script src="js/module.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/service.js"></script>
+    <script src="js/ng-tags-input.min.js"></script>
 </body>
 </html>

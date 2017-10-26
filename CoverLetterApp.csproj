@@ -99,9 +99,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\ng-tags-input.bootstrap.min.css" />
+    <Content Include="Content\css\ng-tags-input.min.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Content\index.html" />
     <Content Include="Content\js\controller.js" />
     <Content Include="Content\js\module.js" />
+    <Content Include="Content\js\ng-tags-input.min.js" />
     <Content Include="Content\js\service.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
