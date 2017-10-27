@@ -23,13 +23,12 @@
                         <label for="tags">Enter Keywords:</label>
                         <tags-input ng-model="vm.formInfo.tags" use-strings="true"></tags-input>
                         <br />
-                        <div class="form-group" ng-controller="experienceController as ec" ng-repeat="tag in vm.formInfo.tags">
+                        <div class="form-group" ng-repeat="tag in vm.formInfo.tags">
                             <label for="experience">Job Experience for {{tag}}:</label>
-                            <input class="form-control" ng-model="ec.formInfo.exp" />
-                        <pre>{{ec.formInfo | json}}</pre>
-                        <button ng-click="vm.consoledata(ec.formInfo.exp)">Send to console</button>
+                            <input class="form-control" ng-model="vm.formInfo.shop[$index]"/>
+                        <pre>{{vm.formInfo | json}}</pre>
                         </div>
-
+                        <button ng-click="vm.consoledata()">Send to console</button>
 
                         <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
                     </form>

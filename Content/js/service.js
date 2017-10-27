@@ -32,16 +32,22 @@
     }
 })();
 
-(function () {
-    "use strict";
+//(function () {
+//    "use strict";
 
-    angular
-        .module("CoverLetterApp")
-        .factory("findParentService", findParentService);
+//    angular
+//        .module("CoverLetterApp")
+//        .factory("myService", myService);
 
-    function findParentService() {
+//    function myService() {
+//        var obj = {};
 
-        return { exp: '' };
-        
-    }
-})();
+//        obj.arr = [];
+
+//        obj.add = function (message) { //message is coming from the child controller
+//            obj.arr.push({ id: obj.arr.length, exp: message });
+//        };
+
+//        return obj;
+//    }
+//})();

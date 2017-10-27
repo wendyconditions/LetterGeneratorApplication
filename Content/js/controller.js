@@ -5,21 +5,24 @@
         .module("CoverLetterApp")
         .controller("letterController", letterController);
 
-    letterController.$inject = ["coverLetterService", "findParentService", "$scope"];
+    letterController.$inject = ["coverLetterService"];
 
-    function letterController(coverLetterService, findParentService, $scope) {
+    function letterController(coverLetterService) {
         var vm = this;
-        vm.formInfo = findParentService;
         vm.data = {};
         vm.btnUrl = _btnUrl;
-        vm.formInfo = null;
+        //vm.formInfo = null;
         vm.jobInfo = [];
         vm.consoledata = _consoledata;
+        //vm.cities = []; sample array to demonstrate child parent scope
+
+        vm.formInfo = { tags: [] };
+        
 
         ///////////////
 
-        function _consoledata(data) {
-            console.log(data);
+        function _consoledata() {
+            console.log(vm.cities);
         }
 
         function _btnUrl(url) {
@@ -68,7 +71,7 @@
 
             var keyword = vm.formInfo.tags;
             var experience = vm.formInfo.exp;
-            
+
 
             for (var i = 0; i < obj.quals.length; i++) {
                 if (String(obj.quals[i].qual).match(/SASS/, 'g')) {
@@ -102,19 +105,28 @@
     }
 })();
 
-(function () {
-    "use strict";
-    angular.module("CoverLetterApp")
-        .controller("experienceController", experienceController);
+//(function () {
+//    "use strict";
+//    angular.module("CoverLetterApp")
+//        .controller("experienceController", experienceController);
 
-    experienceController.$inject = ["coverLetterService", "findParentService", "$scope"];
+//    experienceController.$inject = ["coverLetterService", "$scope"];
 
-    function experienceController(coverLetterService, findParentService, $scope) {
-        var ec = this;
+//    function experienceController(coverLetterService, $scope) {
+//        var ec = this;
+//        ec.experience = { fields: [] };
 
-        ec.formInfo = findParentService;
-    }
-})();
+//        ec.addToArr = _add;
+//        //ec.experience = []; 
+
+//        $scope.vm.cities = ec.experience;
+
+//        function _add(message) {
+//            ec.experience.push(message);
+//        }
+
+//    }
+//})();
 
 (function () {
     "use strict";
