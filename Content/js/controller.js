@@ -5,16 +5,22 @@
         .module("CoverLetterApp")
         .controller("letterController", letterController);
 
-    letterController.$inject = ["coverLetterService"];
+    letterController.$inject = ["coverLetterService", "findParentService", "$scope"];
 
-    function letterController(coverLetterService) {
+    function letterController(coverLetterService, findParentService, $scope) {
         var vm = this;
+        vm.formInfo = findParentService;
         vm.data = {};
         vm.btnUrl = _btnUrl;
         vm.formInfo = null;
         vm.jobInfo = [];
+        vm.consoledata = _consoledata;
 
         ///////////////
+
+        function _consoledata(data) {
+            console.log(data);
+        }
 
         function _btnUrl(url) {
             coverLetterService.getJobData(url).then(_btnUrlSuccess, _btnUrlError);
@@ -93,6 +99,20 @@
             // Need to handle this error properly, alert service 
             console.log("Error");
         }
+    }
+})();
+
+(function () {
+    "use strict";
+    angular.module("CoverLetterApp")
+        .controller("experienceController", experienceController);
+
+    experienceController.$inject = ["coverLetterService", "findParentService", "$scope"];
+
+    function experienceController(coverLetterService, findParentService, $scope) {
+        var ec = this;
+
+        ec.formInfo = findParentService;
     }
 })();
 

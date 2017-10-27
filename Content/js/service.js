@@ -31,3 +31,17 @@
         }
     }
 })();
+
+(function () {
+    "use strict";
+
+    angular
+        .module("CoverLetterApp")
+        .factory("findParentService", findParentService);
+
+    function findParentService() {
+
+        return { exp: '' };
+        
+    }
+})();
