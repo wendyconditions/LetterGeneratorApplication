@@ -23,8 +23,8 @@
                         <label for="tags">Enter Keywords:</label>
                         <tags-input ng-model="vm.formInfo.tags" use-strings="true"></tags-input>
                         <br />
-                        <div class="form-group">
-                            <label for="experience">Job Experience:</label>
+                        <div class="form-group" ng-repeat="tag in vm.formInfo.tags">
+                            <label for="experience">Job Experience for {{tag}}:</label>
                             <input class="form-control" ng-model="vm.formInfo.exp" />
                         </div>
                         <pre>{{vm.formInfo | json}}</pre>

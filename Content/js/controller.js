@@ -19,6 +19,7 @@
         function _btnUrl(url) {
             coverLetterService.getJobData(url).then(_btnUrlSuccess, _btnUrlError);
             vm.data = {};
+            console.log(vm.formInfo);
         }
 
         function _btnUrlSuccess(response) {
@@ -49,6 +50,15 @@
 
             // Work in progress, successfully matched form data to query, next will be to add multiple, using a for loop
             // and possible recursion. Then I will delete anything that is hard coded. wooo!
+
+            var arr = [];
+            arr.push(vm.formInfo);
+            console.log(arr);
+
+            for (var i = 0; arr.length; i++) {
+                console.log(arr[i].tags);
+            }
+
 
             var keyword = vm.formInfo.tags;
             var experience = vm.formInfo.exp;
