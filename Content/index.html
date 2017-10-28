@@ -21,14 +21,14 @@
                         </div>
                         <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
                         <label for="tags">Enter Keywords:</label>
-                        <tags-input ng-model="vm.formInfo.tags" use-strings="true"></tags-input>
+                        <tags-input ng-model="vm.formInfo.tags" use-strings="true" on-tag-added="vm.tagAdded($tag)" on-tag-removed="vm.tagRemoved($tag)"></tags-input>
                         <br />
                         <div class="form-group" ng-repeat="tag in vm.formInfo.tags">
                             <label for="experience">Job Experience for {{tag}}:</label>
-                            <input class="form-control" ng-model="vm.formInfo.shop[$index]"/>
-                        <pre>{{vm.formInfo | json}}</pre>
+                            <input class="form-control" ng-model="vm.formInfo.exp[$index]"/>
                         </div>
                         <button ng-click="vm.consoledata()">Send to console</button>
+                        <pre>{{vm.formInfo | json}}</pre>
 
                         <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
                     </form>
@@ -103,6 +103,7 @@
     <script src="js/module.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/service.js"></script>
-    <script src="js/ng-tags-input.min.js"></script>
+    <!--<script src="js/ng-tags-input.min.js"></script>-->
+    <script src="js/ng-tags-input.js"></script>
 </body>
 </html>

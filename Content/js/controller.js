@@ -5,21 +5,30 @@
         .module("CoverLetterApp")
         .controller("letterController", letterController);
 
-    letterController.$inject = ["coverLetterService"];
+    letterController.$inject = ["coverLetterService", "$scope"];
 
-    function letterController(coverLetterService) {
+    function letterController(coverLetterService, $scope) {
         var vm = this;
         vm.data = {};
         vm.btnUrl = _btnUrl;
-        //vm.formInfo = null;
         vm.jobInfo = [];
         vm.consoledata = _consoledata;
+        vm.tagRemoved = _tagRemoved;
+        vm.tagAdded = _tagAdded;
         //vm.cities = []; sample array to demonstrate child parent scope
-
-        vm.formInfo = { tags: [] };
-        
-
+        var arr = [];
+        arr.arrr = [];
         ///////////////
+
+        function _tagRemoved(tag) {
+            console.log(tag);
+
+        }
+
+        function _tagAdded(tag) {
+            arr.push(tag);
+            console.log(arr);
+        }
 
         function _consoledata() {
             console.log(vm.cities);
@@ -64,10 +73,9 @@
             arr.push(vm.formInfo);
             console.log(arr);
 
-            for (var i = 0; arr.length; i++) {
-                console.log(arr[i].tags);
-            }
-
+            //for (var i = 0; arr.length; i++) {
+            //    console.log(arr[i].tags);
+            //}
 
             var keyword = vm.formInfo.tags;
             var experience = vm.formInfo.exp;
