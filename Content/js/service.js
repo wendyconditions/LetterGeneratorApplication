@@ -20,7 +20,7 @@
             var settings = {
                 method: "POST"
                 , data: jobInfo
-                , url: "http://localhost:50023/api/coverletter/job"
+                , url: "/api/coverletter/job"
             };
             return $http(settings)
                 .then(null, _getJobDataError);
