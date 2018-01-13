@@ -1,7 +1,75 @@
-﻿.color1 {
-    background-color: #fff;
+﻿* {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.color2 {
-    background-color: #eee;
+.jumbotron {
+    background-color: #feffff;
+    margin-top: 3em;
+}
+
+.container h1 {
+    font-size: 3.5em;
+}
+
+.subhead {
+    margin-bottom: 8em;
+}
+
+.step {
+    background-color: #def2f1;
+    color: #17252a;
+    padding: 6em;
+}
+
+.gen {
+    background-color: #3aafa9;
+    color: #feffff;
+    padding: 6em;
+}
+
+form {
+    color: #17252a;
+}
+
+.btn-danger {
+    background-color: #2b7a78;
+    border: #2b7a78;
+}
+
+    .btn-danger:hover {
+        background-color: #17252a;
+        border: #2b7a78;
+    }
+
+    .btn-danger:active {
+        background-color: #17252a;
+        border: #2b7a78;
+    }
+    .btn-danger:focus {
+        background-color: #17252a;
+        border: #2b7a78;
+    }
+    .btn-danger:active:focus {
+        background-color: #17252a;
+        border: #2b7a78;
+    }
+.letters {
+    background-color: #17252a;
+    color: #feffff;
+    padding: 6em;
+}
+
+.bg-primary {
+    background-color: #17252a;
+}
+
+.customletter {
+    margin-bottom: 25px !important;
+    background-color: #feffff;
+    color: #17252a;
+}
+
+.footer {
+    background-color: #eeeeee;
+    padding: 1.5em;
 }

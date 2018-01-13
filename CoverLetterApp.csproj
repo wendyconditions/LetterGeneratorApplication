@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,6 +103,7 @@
     <Content Include="Content\css\ng-tags-input.bootstrap.min.css" />
     <Content Include="Content\css\ng-tags-input.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\homepage.html" />
     <Content Include="Content\index.html" />
     <Content Include="Content\js\controller.js" />
     <Content Include="Content\js\module.js" />

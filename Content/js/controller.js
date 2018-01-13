@@ -41,6 +41,7 @@
         }
 
         function _btnUrlSuccess(response) {
+            console.log(response.data);
             var allQualIndex = response.data.job[0].quals;
             var obj = {
                 company: response.data.job[0].company,
