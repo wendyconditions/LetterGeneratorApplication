@@ -14,20 +14,53 @@ namespace CoverLetterApp.Services
     {
         public async Task<List<JobInfo>> GetAll(WebScrapeRequest model)
         {
+            List<JobInfo> Test = new List<JobInfo>();
+
             var config = Configuration.Default.WithDefaultLoader();
             string address = model.Url;
             var document = await BrowsingContext.New(config).OpenAsync(address);
-            string selector = "body";
-            var nodes = document.QuerySelectorAll(selector);
-            var urlLink = nodes
-                .Select(m => new JobInfo
+
+            var urls =
+                document.QuerySelectorAll("body")
+                .Select(m => new UrlContainer
                 {
-                    Title = m.QuerySelector(".jobtitle").TextContent,
-                    Company = m.QuerySelector(".company").TextContent,
-                    Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
+                    Urls =
+                         m.QuerySelectorAll("a")
+                         .Where(a => a.ClassList.Contains("jobtitle"))
+                         .Select(a => a.GetAttribute("href"))
+                         .ToList()
                 }).ToList();
 
-            return urlLink;
+            foreach (var url in urls)
+            {
+                foreach (var token in url.Urls)
+                {
+                    string newAddress = token;
+                    var doc = await BrowsingContext.New(config).OpenAsync("https://www.indeed.com"+ newAddress);
+
+                    var data =
+                    doc.QuerySelectorAll("body")
+                    .Select(m => new JobInfo
+                    {
+                        Title = m.QuerySelector(".jobtitle").TextContent,
+                        Company = m.QuerySelector(".company").TextContent,
+                        Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
+                    }).ToList();
+
+                    JobInfo newdatas = new JobInfo();
+
+                    foreach (var item in data)
+                    {
+                        JobInfo newdata = new JobInfo();
+                        newdata.Title = item.Title;
+                        newdata.Company = item.Company;
+                        newdata.Quals = item.Quals;
+                        Test.Add(newdata);
+                    }
+                }
+            }
+
+            return Test;
         }
     }
 }

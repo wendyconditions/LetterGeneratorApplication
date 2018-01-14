@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace CoverLetterApp.Models.Responses
 {
-    public class WebScrapeResponse
+    public class UrlContainer
     {
-        public List<JobInfo> Job { get; set; }
+        public List<string> Urls { get; set; }
     }
-
 }

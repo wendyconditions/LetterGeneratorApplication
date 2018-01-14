@@ -901,6 +901,7 @@
     <Compile Include="Interfaces\ICoverLetterService.cs" />
     <Compile Include="Models\Requests\WebScrapeRequest.cs" />
     <Compile Include="Models\Responses\JobInfo.cs" />
+    <Compile Include="Models\Responses\UrlContainer.cs" />
     <Compile Include="Models\Responses\WebScrapeResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CoverLetterService.cs" />
