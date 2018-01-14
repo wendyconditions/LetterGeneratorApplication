@@ -42,20 +42,40 @@
 
         function _btnUrlSuccess(response) {
             console.log(response.data.job);
-            var allQualIndex = response.data.job[0].quals;
-            var obj = {
-                company: response.data.job[0].company,
-                title: response.data.job[0].title,
-                quals: []
-            };
-
-            for (var k = 0; k < allQualIndex.length; k++) {
-                var qualifications = {
-                    qual: allQualIndex[k],
-                    match: []
+            var arr = [];
+            var index = response.data.job;
+            console.log(index);
+            for (var i = 0; i < index.length; i++) {
+                var obj = {
+                    company: index[i].company,
+                    title: index[i].title,
+                    quals: {
+                        qual: index[i].quals,
+                        match: []
+                    }
                 };
-                obj.quals.push(qualifications);
+
+                arr.push(obj);
             }
+            console.log(arr);
+
+
+            //var allQualIndex = response.data.job[0].quals;
+            //console.log(allQualIndex);
+
+            //var obj = {
+            //    company: response.data.job[0].company,
+            //    title: response.data.job[0].title,
+            //    quals: []
+            //};
+
+            //for (var k = 0; k < allQualIndex.length; k++) {
+            //    var qualifications = {
+            //        qual: allQualIndex[k],
+            //        match: []
+            //    };
+            //    obj.quals.push(qualifications);
+            //}
 
             var sass = "I am good at Sass";
             var html = "Experience developing in HTML, CSS, and JavaScript, specifically jQuery libraries";
@@ -82,29 +102,29 @@
             var experience = vm.formInfo.exp;
 
 
-            for (var i = 0; i < obj.quals.length; i++) {
-                if (String(obj.quals[i].qual).match(/SASS/, 'g')) {
-                    obj.quals[i].match = sass;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(keyword, 'g')) {
-                    obj.quals[i].match = experience;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/angular/, 'g')) {
-                    obj.quals[i].match = angular;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/css/, 'g')) {
-                    obj.quals[i].match = css;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/sql/, 'g')) {
-                    obj.quals[i].match = sql;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/javascript/, 'g')) {
-                    obj.quals[i].match = js;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/slack/, 'g')) {
-                    obj.quals[i].match = slack;
-                } else if (String(obj.quals[i].qual).toLowerCase().match(/git/, 'g')) {
-                    obj.quals[i].match = git;
-                } else {
-                    obj.quals[i].match = null;
-                }
-            }
-            vm.jobInfo.push(obj);
-            console.log(vm.jobInfo);
+            //for (var i = 0; i < obj.quals.length; i++) {
+            //    if (String(obj.quals[i].qual).match(/SASS/, 'g')) {
+            //        obj.quals[i].match = sass;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(keyword, 'g')) {
+            //        obj.quals[i].match = experience;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(/angular/, 'g')) {
+            //        obj.quals[i].match = angular;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(/css/, 'g')) {
+            //        obj.quals[i].match = css;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(/sql/, 'g')) {
+            //        obj.quals[i].match = sql;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(/javascript/, 'g')) {
+            //        obj.quals[i].match = js;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(/slack/, 'g')) {
+            //        obj.quals[i].match = slack;
+            //    } else if (String(obj.quals[i].qual).toLowerCase().match(/git/, 'g')) {
+            //        obj.quals[i].match = git;
+            //    } else {
+            //        obj.quals[i].match = null;
+            //    }
+            //}
+            //vm.jobInfo.push(obj);
+            //console.log(vm.jobInfo);
         }
 
         function _btnUrlError() {
