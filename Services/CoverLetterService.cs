@@ -16,6 +16,7 @@ namespace CoverLetterApp.Services
         {
             List<JobInfo> Test = new List<JobInfo>();
 
+
             var config = Configuration.Default.WithDefaultLoader();
             string address = model.Url;
             var document = await BrowsingContext.New(config).OpenAsync(address);
