@@ -3,24 +3,54 @@
 <head>
     <meta charset="utf-8" />
     <title>Cover Letter App</title>
-    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="css/bootstrap.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link href="css/ng-tags-input.min.css" rel="stylesheet" />
     <link href="css/ng-tags-input.bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 </head>
 <body ng-app="CoverLetterApp" ng-controller="letterController as vm">
+    <div class="container">
+        <nav class="navbar navbar-toggleable-md navbar-dark bg-faded">
+            <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon rounded"></span>
+            </button>
+            <a class="navbar-brand" href="#">Clapp</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                </ul>
+                <!--<span class="navbar-text">
+                    Navbar text with an inline element
+                </span>-->
+            </div>
+        </nav>
+    </div>
     <div class="jumbotron d-flex align-items-center">
         <div class="container">
             <h1 class="text-center">Automate and enhance your job hunt</h1>
-            <h4 class="text-center subhead">This is a cover letter generator used directly with <a href="https://www.indeed.com/">Indeed.com</a></h4>
-            <button type="button" class="btn btn-group-lg btn-lg btn-danger center-block">Let's get started</button>
+            <h4 class="text-center subhead">Clapp is a cover letter generator used directly with <a href="https://www.indeed.com/">Indeed.com</a></h4>
+            <div class="text-center">
+                <button type="button" class="btn btn-lg btn-danger">Let's get started</button>
+            </div>
         </div>
     </div>
-    <div class="container-fluid step text-center">
+    <div class="container-fluid step">
         <div class="row">
-            <h1>Step One</h1>
-            <h4>Head over to <a href="https://www.indeed.com/" target="_blank">Indeed.com</a> and enter a job search</h4>
+            <div class="col-sm-12 text-center">
+                <h1>Step One</h1>
+                <h4>Head over to <a href="https://www.indeed.com/" target="_blank">Indeed.com</a> and enter a job search</h4>
+            </div>
         </div>
     </div>
 
@@ -33,7 +63,7 @@
                     <form>
                         <div class="form-group">
                             <label for="jobUrl">Enter a job posting URL from Indeed:</label>
-                            <input class="form-control" ng-model="vm.data.url" placeholder="Sample: https://www.indeed.com/jobs?q=web%20developer&l=Los%20Angeles%2C%20CA&vjk=2ac3fa39af2a9d9a" />
+                            <input class="form-control" ng-model="vm.data.url" placeholder="Sample: https://www.indeed.com/jobs?q=admin&l=Los+Angeles%2C+CA" />
                         </div>
                         <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
                         <label for="tags">Enter Keywords: <em>E.g. html, css, javascript, etc</em></label>
@@ -59,66 +89,67 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid letters"ng-if="vm.jobInfo.length" >
-        <h1 class="text-center" >Walaaa - Cover letters galore!!!</h1>
-        <div class="row" ng-repeat="job in vm.jobInfo">
-            <div class="col-sm-offset-2 col-sm-8 customletter">
-                <h1 class="bg-primary">Cover letter for {{job.title}}, {{job.company}}</h1><br />
-                <p><strong>Greetings {{job.company}},</strong><p>
-                <p>In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>
-                    Here are a couple projects I recently worked on that I feel are relevant to the qualifications you desire.
-                    <ul>
-                        <li>
-                            <a href="https://blakwealth.azurewebsites.net/">https://blakwealth.azurewebsites.net</a>
-                            (AngularJS, C#/.NET, SQL Server, AJAX, JSON, WebAPI, S3)
-                            Set up all environments, custom filters, components, services, stored procedures, etc
-                        </li>
-                        <li>
-                            <a href="https://wendyconditions.github.io/OpenMicNightProject">https://wendyconditions.github.io/OpenMicNightProject</a>
-                            (Bootstrap, CSS, HTML, JS, and jQuery)
-                            Basic responsive website, design, SVG graphics and animation
-                        </li>
-                        <li>
-                            <a href="https://wendyconditions.herokuapp.com/">https://wendyconditions.herokuapp.com</a>
-                            I also have a personal website showcasing some additional work
-                        </li>
-                        <li>
-                            <a href="https://github.com/wendyconditions">https://github.com/wendyconditions</a>
-                            also a Github where I have some additional applications
-                        </li>
-                    </ul>
-                </p>
+    <div class="container-fluid letters" ng-if="vm.jobInfo.length">
+        <h1 class="text-center wala">Walaaa - Cover letters galore!!!</h1>
+        <div class="container">
+            <div class="row" ng-repeat="job in vm.jobInfo | limitTo:5">
+                <div class="col-sm-12 generated-letter">
+                    <h2 class="bg-header-letter">Cover letter for {{job.title}}, {{job.company}}</h2>
+                    <p><strong>Greetings {{job.company}},</strong><p>
+                    <p>In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>
+                        Here are a couple projects I recently worked on that I feel are relevant to the qualifications you desire.
+                        <ul>
+                            <li>
+                                <a href="https://blakwealth.azurewebsites.net/">https://blakwealth.azurewebsites.net</a>
+                                (AngularJS, C#/.NET, SQL Server, AJAX, JSON, WebAPI, S3)
+                                Set up all environments, custom filters, components, services, stored procedures, etc
+                            </li>
+                            <li>
+                                <a href="https://wendyconditions.github.io/OpenMicNightProject">https://wendyconditions.github.io/OpenMicNightProject</a>
+                                (Bootstrap, CSS, HTML, JS, and jQuery)
+                                Basic responsive website, design, SVG graphics and animation
+                            </li>
+                            <li>
+                                <a href="https://wendyconditions.herokuapp.com/">https://wendyconditions.herokuapp.com</a>
+                                I also have a personal website showcasing some additional work
+                            </li>
+                            <li>
+                                <a href="https://github.com/wendyconditions">https://github.com/wendyconditions</a>
+                                also a Github where I have some additional applications
+                            </li>
+                        </ul>
+                    </p>
 
-                <!--Qualifications repeat-->
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="col-md-6">Qualifications for {{job.title}}</th>
-                            <th class="col-md-6">How I Qualify</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="quals in job.quals" ng-if="quals.match">
-                            <td>{{quals.qual}} </td>
-                            <td>{{quals.match}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <!--Qualifications repeat-->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Qualifications for {{job.title}}</th>
+                                <th>How I Qualify</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td>fdafafdafdafdfadffaf</td>
+                                <td>fdafddfdafdjflajflajfljflajfldhakihf kahf iajl djlasjflafjla</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <!--Closing statements of resume-->
-                <p>Please reference my resume for more details. I would appreciate the opportunity to meet with you to discuss my candidacy. Thank you for your time and consideration.</p><br />
-                <p>Regards,</p>
-                <p>
-                    Wendy Maldonado
-                    <br />
-                    myemail@myemail.com
-                </p>
+                    <!--Closing statements of resume-->
+                    <p>Please reference my resume for more details. I would appreciate the opportunity to meet with you to discuss my candidacy. Thank you for your time and consideration.</p><br />
+                    <p>Regards,</p>
+                    <p>
+                        Wendy Maldonado
+                        <br />
+                        myemail@myemail.com
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="container-fluid footer text-center">
         &copy; 2017-2018 Wendy Maldonado | <a href="https://wendyconditions.herokuapp.com/">wendyconditions.com</a> | Site powered by <a href="https://www.gearhost.com/">GearHost</a>
     </div>

@@ -36,26 +36,32 @@ namespace CoverLetterApp.Services
                 foreach (var token in url.Urls)
                 {
                     string newAddress = token;
-                    var doc = await BrowsingContext.New(config).OpenAsync("https://www.indeed.com"+ newAddress);
+                    var doc = await BrowsingContext.New(config).OpenAsync("https://www.indeed.com" + newAddress);
 
-                    var data =
-                    doc.QuerySelectorAll("body")
-                    .Select(m => new JobInfo
+                    if (doc.Url.Contains("www.indeed.com"))
+                    {
+                        var data =
+                        doc.QuerySelectorAll("body")
+                        .Select(m => new JobInfo
                     {
                         Title = m.QuerySelector(".jobtitle").TextContent,
                         Company = m.QuerySelector(".company").TextContent,
                         Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
                     }).ToList();
 
-                    JobInfo newdatas = new JobInfo();
 
-                    foreach (var item in data)
+                        foreach (var item in data)
+                        {
+                            JobInfo newdata = new JobInfo();
+                            newdata.Title = item.Title;
+                            newdata.Company = item.Company;
+                            newdata.Quals = item.Quals;
+                            Test.Add(newdata);
+                        }
+                    }
+                    else
                     {
-                        JobInfo newdata = new JobInfo();
-                        newdata.Title = item.Title;
-                        newdata.Company = item.Company;
-                        newdata.Quals = item.Quals;
-                        Test.Add(newdata);
+                        continue;
                     }
                 }
             }

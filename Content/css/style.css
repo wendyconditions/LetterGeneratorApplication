@@ -1,6 +1,22 @@
 ﻿* {
     font-family: 'Open Sans', sans-serif;
 }
+.navbar-brand {
+    font-family: 'Kaushan Script', 'Helvetica Neue', Arial, Helvetica, sans-serif, cursive;
+    font-size: 1.8em;
+}
+.bg-faded{
+    background-color: #fff;
+}
+
+.collapse{
+    font-size: 1em;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(2,17,216, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    border: 1px solid #eee;
+}
 
 .jumbotron {
     background-color: #feffff;
@@ -29,6 +45,7 @@
 
 form {
     color: #17252a;
+    margin-top:2.3em;
 }
 
 .btn-danger {
@@ -53,20 +70,28 @@ form {
         background-color: #17252a;
         border: #2b7a78;
     }
+.wala {
+    text-decoration: underline;
+}
+
 .letters {
     background-color: #17252a;
     color: #feffff;
     padding: 6em;
 }
 
-.bg-primary {
-    background-color: #17252a;
-}
-
-.customletter {
+.generated-letter {
     margin-bottom: 25px !important;
     background-color: #feffff;
     color: #17252a;
+    margin-top: 2.3em;
+    border: 1px solid white;
+    padding: 10px;
+}
+.bg-header-letter {
+    background-color: #17252a;
+    color: #fff;
+    /*font-size: 1em!important;*/
 }
 
 .footer {

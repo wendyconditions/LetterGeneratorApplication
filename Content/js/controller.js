@@ -41,10 +41,10 @@
         }
 
         function _btnUrlSuccess(response) {
-            console.log(response.data.job);
             var arr = [];
             var index = response.data.job;
             console.log(index);
+
             for (var i = 0; i < index.length; i++) {
                 var obj = {
                     company: index[i].company,
@@ -57,8 +57,9 @@
 
                 arr.push(obj);
             }
-            console.log(arr);
-
+            
+            vm.jobInfo = arr;
+            console.log(vm.jobInfo);
 
             //var allQualIndex = response.data.job[0].quals;
             //console.log(allQualIndex);
@@ -90,16 +91,16 @@
             // Work in progress, successfully matched form data to query, next will be to add multiple, using a for loop
             // and possible recursion. Then I will delete anything that is hard coded. wooo!
 
-            var arr = [];
-            arr.push(vm.formInfo);
-            console.log(arr);
+            //var arr = [];
+            //arr.push(vm.formInfo);
+            //console.log(arr);
 
             //for (var i = 0; arr.length; i++) {
             //    console.log(arr[i].tags);
             //}
 
-            var keyword = vm.formInfo.tags;
-            var experience = vm.formInfo.exp;
+            //var keyword = vm.formInfo.tags;
+            //var experience = vm.formInfo.exp;
 
 
             //for (var i = 0; i < obj.quals.length; i++) {
