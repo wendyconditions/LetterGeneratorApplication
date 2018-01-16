@@ -26,7 +26,7 @@ No database
 
 * If no matching data with employer, generate basic coverletter template
 * Button to allow scraping more than 5 jobs (next 5 jobs)
-* Might add database... maybe if so, the following
-  * Alert Service
+* Alert Service
+* Might add database... maybe. If so, the following
   * Logger Service 
   * User Service
