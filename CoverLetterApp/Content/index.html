@@ -24,10 +24,10 @@
                         <a class="nav-link" href="#">Docs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="https://github.com/wendyconditions/LetterGeneratorApplication/issues">Issues</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Help</a>
+                        <a class="nav-link" href="https://github.com/wendyconditions/LetterGeneratorApplication">Help</a>
                     </li>
                 </ul>
                 <!--<span class="navbar-text">
@@ -62,7 +62,7 @@
                     <h4 class="text-center">Create your custom letter by filling out the form below</h4>
                     <form>
                         <div class="form-group">
-                            <label for="jobUrl">Enter a job posting URL from Indeed:</label>
+                            <label for="jobUrl">Enter a job search URL from Indeed:</label>
                             <input class="form-control" ng-model="vm.data.url" placeholder="Sample: https://www.indeed.com/jobs?q=admin&l=Los+Angeles%2C+CA" />
                         </div>
                         <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
@@ -84,6 +84,10 @@
                             <input class="form-control" />
                         </div>
                         <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
+                        <div ng-if="vm.dataLoading.load">
+                            {{vm.dataLoading.message}}
+                        </div>
+                        {{error}}
                     </form>
                 </div>
             </div>

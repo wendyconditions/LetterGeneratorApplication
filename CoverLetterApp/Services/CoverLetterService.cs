@@ -16,7 +16,6 @@ namespace CoverLetterApp.Services
         {
             List<JobInfo> Test = new List<JobInfo>();
 
-
             var config = Configuration.Default.WithDefaultLoader();
             string address = model.Url;
             var document = await BrowsingContext.New(config).OpenAsync(address);
@@ -30,33 +29,51 @@ namespace CoverLetterApp.Services
                          .Where(a => a.ClassList.Contains("jobtitle"))
                          .Select(a => a.GetAttribute("href"))
                          .ToList()
-                }).ToList();
+                }).FirstOrDefault();
 
-            foreach (var url in urls)
+            foreach (var item in urls.Urls)
             {
-                foreach (var token in url.Urls)
+                string newAddress = item;
+                var doc = await BrowsingContext.New(config).OpenAsync("https://www.indeed.com" + newAddress);
+                try
                 {
-                    string newAddress = token;
-                    var doc = await BrowsingContext.New(config).OpenAsync("https://www.indeed.com" + newAddress);
-
-                    if (doc.Url.Contains("www.indeed.com"))
+                    if (!doc.Url.Contains("prime") && !doc.Url.Contains("vjs"))
                     {
                         var data =
                         doc.QuerySelectorAll("body")
                         .Select(m => new JobInfo
-                    {
-                        Title = m.QuerySelector(".jobtitle").TextContent,
-                        Company = m.QuerySelector(".company").TextContent,
-                        Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
-                    }).ToList();
+                        {
+                            Title = m.QuerySelector(".jobtitle").TextContent,
+                            Company = m.QuerySelector(".company").TextContent,
+                            Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
+                        }).ToList();
 
-
-                        foreach (var item in data)
+                        foreach (var sub in data)
                         {
                             JobInfo newdata = new JobInfo();
-                            newdata.Title = item.Title;
-                            newdata.Company = item.Company;
-                            newdata.Quals = item.Quals;
+                            newdata.Title = sub.Title;
+                            newdata.Company = sub.Company;
+                            newdata.Quals = sub.Quals;
+                            Test.Add(newdata);
+                        }
+                    }
+                    else if(!doc.Url.Contains("prime") && doc.Url.Contains("vjs"))
+                    {
+                        var data =
+                        doc.QuerySelectorAll("body")
+                        .Select(m => new JobInfo
+                        {
+                            Title = m.QuerySelector(".jobtitle").TextContent,
+                            Company = m.QuerySelector(".company").TextContent,
+                            Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
+                        }).ToList();
+
+                        foreach (var sub in data)
+                        {
+                            JobInfo newdata = new JobInfo();
+                            newdata.Title = sub.Title;
+                            newdata.Company = sub.Company;
+                            newdata.Quals = sub.Quals;
                             Test.Add(newdata);
                         }
                     }
@@ -65,6 +82,13 @@ namespace CoverLetterApp.Services
                         continue;
                     }
                 }
+                catch (Exception e)
+                {
+
+                    throw e;
+                }
+
+
             }
 
             return Test;

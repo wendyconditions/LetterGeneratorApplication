@@ -26,9 +26,36 @@ namespace CoverLetterApp.Controllers.Api
         [Route("job"), HttpPost]
         public async Task<HttpResponseMessage> GetAll(WebScrapeRequest model)
         {
-            var response = new WebScrapeResponse();
-            response.Job = await coverLetterService.GetAll(model);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                var response = new WebScrapeResponse();
+                response.Job = await coverLetterService.GetAll(model);
+                if(response.Job.Count == 0)
+                {
+                    var data = string.Format("Unfortunately, that search didn't have a good candidates to retrieve data from. Try another Url search.", model);
+                    return Request.CreateErrorResponse(HttpStatusCode.NoContent, data);
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            
+            //catch (Exception ex)
+            //{
+            //    if(ex == null)
+            //    {
+            //        return Request.CreateErrorResponse(HttpStatusCode.NoContent, ex);
+            //    } 
+            //}
+            //finally
+            //{
+            //    throw new Exception();
+            //}
+
         }
     }
 }

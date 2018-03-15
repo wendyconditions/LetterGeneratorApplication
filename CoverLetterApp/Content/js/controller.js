@@ -15,7 +15,12 @@
         vm.consoledata = _consoledata;
         vm.tagRemoved = _tagRemoved;
         vm.tagAdded = _tagAdded;
-        //vm.cities = []; sample array to demonstrate child parent scope
+        
+        vm.dataLoading = {
+            message: "",
+            load: false
+        };
+        
         var arr = [];
         arr.arrr = [];
         ///////////////
@@ -35,31 +40,57 @@
         }
 
         function _btnUrl(url) {
-            coverLetterService.getJobData(url).then(_btnUrlSuccess, _btnUrlError);
-            vm.data = {};
-            console.log(vm.formInfo);
+            $scope.error = "";
+            var patt = new RegExp("https://www.indeed.com/");
+            var res = patt.test(url.url);
+
+            if (res) {
+                vm.dataLoading = {
+                    message: "loading...",
+                    load: true
+                };
+
+                coverLetterService.getJobData(url)
+                    .then(_btnUrlSuccess, _btnUrlError);
+
+                vm.data = {};
+                console.log(vm.formInfo);
+            } else {
+                vm.dataLoading = {
+                    message: "It's not you, it's me! There's an error on my side. Let me work on that. Please come back soon and try again.", //error when program throws an error object reference, error on MY part, not the user
+                    load: true
+                };
+            }
         }
 
         function _btnUrlSuccess(response) {
+            vm.dataLoading.load = false; 
+
             var arr = [];
             var index = response.data.job;
-            console.log(index);
+            console.log(response);
 
-            for (var i = 0; i < index.length; i++) {
-                var obj = {
-                    company: index[i].company,
-                    title: index[i].title,
-                    quals: {
-                        qual: index[i].quals,
-                        match: []
-                    }
-                };
+            if (response.status === 204) {
+                $scope.error = "Unfortunately, that search didn't have a good candidates to retrieve data from. Try another Url search.";
+                return;
+            } else {
+                for (var i = 0; i < index.length; i++) {
+                    var obj = {
+                        company: index[i].company,
+                        title: index[i].title,
+                        quals: {
+                            qual: index[i].quals,
+                            match: []
+                        }
+                    };
 
-                arr.push(obj);
+                    arr.push(obj);
+                }
+
+                vm.jobInfo = arr;
+                console.log(vm.jobInfo);
             }
             
-            vm.jobInfo = arr;
-            console.log(vm.jobInfo);
 
             //var allQualIndex = response.data.job[0].quals;
             //console.log(allQualIndex);
@@ -131,6 +162,11 @@
         function _btnUrlError() {
             // Need to handle this error properly, alert service 
             console.log("Error");
+
+            vm.dataLoading = {
+                message: "Error occurred! Check the URL and try again.",
+                load: true
+            };
         }
     }
 })();
