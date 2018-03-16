@@ -14,13 +14,14 @@
         vm.jobInfo = [];
         vm.tagRemoved = _tagRemoved;
         vm.btnResubmit = _resubmit;
-
         vm.dataLoading = {
             message: "",
             load: false
         };
 
         ///////////////
+
+       
 
         function _tagRemoved(tag) {
             for (var key in vm.formInfo.exp) {
@@ -67,7 +68,7 @@
         }
 
 
-        //It's not you, it's me! There's an error on my side. Let me work on that. Please come back soon and try again.", //error when program throws an error object reference, error on MY part, not the user
+        
         function _btnUrlSuccess(response) {
             vm.dataLoading.load = false;
             var index = response.data.job;
@@ -79,82 +80,40 @@
                 };
                 return;
             } else {
-                for (var i = 0; i < index.length; i++) {
-                    vm.jobInfo.push(index[i]);
-                }
-                //for (var i = 0; i < vm.jobInfo.length; i++) {
-                //    console.log(vm.jobInfo[i].qualInfo);
-                //    for (var k = 0; k < vm.jobInfo[i].qualInfo.quals.length; k++) {
-                //        console.log(vm.jobInfo[i].qualInfo.quals[k]);
-                //        // put string through matching
-                //        for (var key in vm.formInfo.exp) {
-                //            console.log(key);
-                //            if (vm.jobInfo[i].qualInfo.quals[k].match(/key/, 'g')) {
-                //                var match = {
-                //                    keyword: key,
-                //                    mywork: vm.formInfo.exp[key],
-                //                    theirwork: vm.jobInfo[i].qualInfo.quals[k]
-                //                };
-                //                vm.jobInfo[i].qualInfo.matches.push(match);
-                //            }
-                //        }
-                //    }
-                //}
-
-                //String(obj.quals[i].qual).toLowerCase().match(keyword, 'g')
-
+                // matching key words with response
                 for (var key in vm.formInfo.exp) {
-                    for (var i = 0; i < vm.jobInfo.length; i++) {
-                        for (var k = 0; k < vm.jobInfo[i].qualInfo.quals.length; k++) {
-                            if (String(vm.jobInfo[i].qualInfo.quals[k]).toLowerCase().match(key, 'g')) {
+                    for (var i = 0; i < index.length; i++) {
+                        for (var k = 0; k < index[i].qualInfo.quals.length; k++) {
+                            if (String(index[i].qualInfo.quals[k]).toLowerCase().match(key, 'g')) {
                                 var match = {
                                     keyword: key,
                                     mywork: vm.formInfo.exp[key],
-                                    theirwork: vm.jobInfo[i].qualInfo.quals[k]
+                                    theirwork: index[i].qualInfo.quals[k]
                                 };
-                                vm.jobInfo[i].qualInfo.matches.push(match);
+                                index[i].qualInfo.matches.push(match);
                             }
                         }
                     }
+                }
+
+                // pushing matched objects to jobInfo array
+                for (var i = 0; i < index.length; i++) {
+                    vm.jobInfo.push(index[i]);
                 }
                 console.log(vm.jobInfo);
             }
         }
 
-        function _btnUrlError() {
-            // Need to handle this error properly, alert service 
-            console.log("Error");
+        function _btnUrlError(e) {
+            console.log(e);
 
             vm.dataLoading = {
-                message: "Error occurred! Check the URL and try again.",
+                message: "It's not you, it's me! There's an error on my side. Let me work on that. Please come back soon and try again.", //error when program throws an error object reference, error on MY part, not the user",
                 load: true
             };
         }
     }
 })();
-
-//(function () {
-//    "use strict";
-//    angular.module("CoverLetterApp")
-//        .controller("experienceController", experienceController);
-
-//    experienceController.$inject = ["coverLetterService", "$scope"];
-
-//    function experienceController(coverLetterService, $scope) {
-//        var ec = this;
-//        ec.experience = { fields: [] };
-
-//        ec.addToArr = _add;
-//        //ec.experience = []; 
-
-//        $scope.vm.cities = ec.experience;
-
-//        function _add(message) {
-//            ec.experience.push(message);
-//        }
-
-//    }
-//})();
 
 (function () {
     "use strict";
