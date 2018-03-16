@@ -45,7 +45,11 @@ namespace CoverLetterApp.Services
                         {
                             Title = m.QuerySelector(".jobtitle").TextContent,
                             Company = m.QuerySelector(".company").TextContent,
-                            Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
+                            QualInfo = new QualInfo {
+                                Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList(),
+                                Matches = new string[0]
+
+                            }
                         }).ToList();
 
                         foreach (var sub in data)
@@ -53,27 +57,32 @@ namespace CoverLetterApp.Services
                             JobInfo newdata = new JobInfo();
                             newdata.Title = sub.Title;
                             newdata.Company = sub.Company;
-                            newdata.Quals = sub.Quals;
+                            newdata.QualInfo = sub.QualInfo;
                             Test.Add(newdata);
                         }
                     }
                     else if(doc.Url.Contains("vjs"))
                     {
                         var data =
-                        doc.QuerySelectorAll("body")
-                        .Select(m => new JobInfo
-                        {
-                            Title = m.QuerySelector(".jobtitle").TextContent,
-                            Company = m.QuerySelector(".company").TextContent,
-                            Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList()
-                        }).ToList();
+                       doc.QuerySelectorAll("body")
+                       .Select(m => new JobInfo
+                       {
+                           Title = m.QuerySelector(".jobtitle").TextContent,
+                           Company = m.QuerySelector(".company").TextContent,
+                           QualInfo = new QualInfo
+                           {
+                               Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList(),
+                               Matches = new string[0]
+                               
+                           }
+                       }).ToList();
 
                         foreach (var sub in data)
                         {
                             JobInfo newdata = new JobInfo();
                             newdata.Title = sub.Title;
                             newdata.Company = sub.Company;
-                            newdata.Quals = sub.Quals;
+                            newdata.QualInfo = sub.QualInfo;
                             Test.Add(newdata);
                         }
                     }

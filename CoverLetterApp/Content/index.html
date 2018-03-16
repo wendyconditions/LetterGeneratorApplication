@@ -62,32 +62,36 @@
                     <h4 class="text-center">Create your custom letter by filling out the form below</h4>
                     <form>
                         <div class="form-group">
-                            <label for="jobUrl">Enter a job search URL from Indeed:</label>
+                            <label for="jobUrl">Cut and paste job search URL from Indeed:</label>
                             <input class="form-control" ng-model="vm.data.url" placeholder="Sample: https://www.indeed.com/jobs?q=admin&l=Los+Angeles%2C+CA" />
                         </div>
-                        <!--Lookup tags input, when tags are created, have new input box show up requiring experience. So probably wont need the input field above, job experience-->
+
                         <label for="tags">Enter Keywords: <em>E.g. html, css, javascript, etc</em></label>
-                        <tags-input ng-model="vm.formInfo.tags" use-strings="true" on-tag-added="vm.tagAdded($tag)" on-tag-removed="vm.tagRemoved($tag)"></tags-input>
+                        <tags-input ng-model="tags" use-strings="true" on-tag-removed="vm.tagRemoved($tag)"></tags-input>
                         <br />
-                        <div class="form-group" ng-repeat="tag in vm.formInfo.tags">
+
+                        <div class="form-group" ng-repeat="tag in tags">
                             <label for="experience">Your Job Experience for {{tag}}: <em>E.g. Over 5 yrs using html in production enviornment.</em></label>
-                            <input class="form-control" ng-model="vm.formInfo.exp[$index]" />
+                            <input class="form-control" ng-model="vm.formInfo.exp[tag]" />
                         </div>
-                        <!--<button ng-click="vm.consoledata()">Send to console</button>
-                        <pre>{{vm.formInfo | json}}</pre>-->
                         <div class="form-group">
                             <label for="coverletter">Write out the body of your own cover letter:</label>
-                            <textarea class="form-control" rows="10"></textarea>
+                            <textarea class="form-control" rows="10" ng-model="vm.formInfo.message"></textarea>
                         </div>
+                        <pre>{{vm.formInfo | json}}</pre>
                         <div class="form-group">
                             <label for="name">Your full name:</label>
-                            <input class="form-control" />
+                            <input class="form-control" ng-model="vm.formInfo.name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Your E-mail:</label>
+                            <input class="form-control" ng-model="vm.formInfo.email" />
                         </div>
                         <br /><button class="btn btn-primary" ng-click="vm.btnUrl(vm.data)">Create</button>
                         <div ng-if="vm.dataLoading.load">
                             {{vm.dataLoading.message}}
                         </div>
-                        {{error}}
+
                     </form>
                 </div>
             </div>
@@ -95,49 +99,29 @@
     </div>
     <div class="container-fluid letters" ng-if="vm.jobInfo.length">
         <h1 class="text-center wala">Walaaa - Cover letters galore!!!</h1>
+        <em>Showing {{vm.jobInfo.length | number}} Claps</em>
         <div class="container">
-            <div class="row" ng-repeat="job in vm.jobInfo | limitTo:5">
+            <div class="row" ng-repeat="job in vm.jobInfo">
                 <div class="col-sm-12 generated-letter">
                     <h2 class="bg-header-letter">Cover letter for {{job.title}}, {{job.company}}</h2>
                     <p><strong>Greetings {{job.company}},</strong><p>
+
                     <p>In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p>
-                        Here are a couple projects I recently worked on that I feel are relevant to the qualifications you desire.
-                        <ul>
-                            <li>
-                                <a href="https://blakwealth.azurewebsites.net/">https://blakwealth.azurewebsites.net</a>
-                                (AngularJS, C#/.NET, SQL Server, AJAX, JSON, WebAPI, S3)
-                                Set up all environments, custom filters, components, services, stored procedures, etc
-                            </li>
-                            <li>
-                                <a href="https://wendyconditions.github.io/OpenMicNightProject">https://wendyconditions.github.io/OpenMicNightProject</a>
-                                (Bootstrap, CSS, HTML, JS, and jQuery)
-                                Basic responsive website, design, SVG graphics and animation
-                            </li>
-                            <li>
-                                <a href="https://wendyconditions.herokuapp.com/">https://wendyconditions.herokuapp.com</a>
-                                I also have a personal website showcasing some additional work
-                            </li>
-                            <li>
-                                <a href="https://github.com/wendyconditions">https://github.com/wendyconditions</a>
-                                also a Github where I have some additional applications
-                            </li>
-                        </ul>
-                    </p>
+                    {{vm.formInfo.message}}
+                    
 
                     <!--Qualifications repeat-->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" ng-if="job.qualInfo.matches.length > 0">
                         <thead>
-                            <tr>
+                            <tr> 
                                 <th>Qualifications for {{job.title}}</th>
                                 <th>How I Qualify</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr >
-                                <td>fdafafdafdafdfadffaf</td>
-                                <td>fdafddfdafdjflajflajfljflajfldhakihf kahf iajl djlasjflafjla</td>
+                            <tr ng-repeat="specs in job.qualInfo.matches">
+                                <td>{{specs.theirwork}}</td>
+                                <td>{{specs.mywork}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -146,9 +130,9 @@
                     <p>Please reference my resume for more details. I would appreciate the opportunity to meet with you to discuss my candidacy. Thank you for your time and consideration.</p><br />
                     <p>Regards,</p>
                     <p>
-                        Wendy Maldonado
+                        {{vm.formInfo.name}}
                         <br />
-                        myemail@myemail.com
+                        {{vm.formInfo.email}}
                     </p>
                 </div>
             </div>

@@ -32,7 +32,7 @@ namespace CoverLetterApp.Controllers.Api
                 response.Job = await coverLetterService.GetAll(model);
                 if(response.Job.Count == 0)
                 {
-                    var data = string.Format("Unfortunately, that search didn't have a good candidates to retrieve data from. Try another Url search.", model);
+                    var data = string.Format("NoContent", model);
                     return Request.CreateErrorResponse(HttpStatusCode.NoContent, data);
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, response);
