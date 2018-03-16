@@ -15,12 +15,13 @@
         vm.consoledata = _consoledata;
         vm.tagRemoved = _tagRemoved;
         vm.tagAdded = _tagAdded;
-        
+        vm.btnResubmit = _resubmit;
+
         vm.dataLoading = {
             message: "",
             load: false
         };
-        
+
         var arr = [];
         arr.arrr = [];
         ///////////////
@@ -39,6 +40,19 @@
             console.log(vm.cities);
         }
 
+        var counter = 0;
+
+        function _resubmit(url) {
+            counter = counter + 30;
+
+            var nextPageUrl = {
+                url: url.url + "&start=" + counter
+            }
+
+            coverLetterService.getJobData(nextPageUrl)
+                .then(_btnUrlSuccess, _btnUrlError);
+        }
+
         function _btnUrl(url) {
             $scope.error = "";
             var patt = new RegExp("https://www.indeed.com/");
@@ -53,7 +67,7 @@
                 coverLetterService.getJobData(url)
                     .then(_btnUrlSuccess, _btnUrlError);
 
-                vm.data = {};
+                //vm.data = {};
                 console.log(vm.formInfo);
             } else {
                 vm.dataLoading = {
@@ -64,14 +78,14 @@
         }
 
         function _btnUrlSuccess(response) {
-            vm.dataLoading.load = false; 
+            vm.dataLoading.load = false;
 
             var arr = [];
             var index = response.data.job;
             console.log(response);
 
             if (response.status === 204) {
-                $scope.error = "Unfortunately, that search didn't have a good candidates to retrieve data from. Try another Url search.";
+                $scope.error = "Unfortunately, that url did not produce suitable results. Try another Url search.";
                 return;
             } else {
                 for (var i = 0; i < index.length; i++) {
@@ -90,7 +104,7 @@
                 vm.jobInfo = arr;
                 console.log(vm.jobInfo);
             }
-            
+
 
             //var allQualIndex = response.data.job[0].quals;
             //console.log(allQualIndex);

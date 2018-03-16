@@ -26,7 +26,7 @@ namespace CoverLetterApp.Services
                 {
                     Urls =
                          m.QuerySelectorAll("a")
-                         .Where(a => a.ClassList.Contains("jobtitle"))
+                         .Where(a => a.ClassList.Contains("turnstileLink") && !a.ClassList.Contains("jobtitle"))
                          .Select(a => a.GetAttribute("href"))
                          .ToList()
                 }).FirstOrDefault();
@@ -37,7 +37,7 @@ namespace CoverLetterApp.Services
                 var doc = await BrowsingContext.New(config).OpenAsync("https://www.indeed.com" + newAddress);
                 try
                 {
-                    if (!doc.Url.Contains("prime") && !doc.Url.Contains("vjs"))
+                    if (!doc.Url.Contains("prime") && !doc.Url.Contains("cmp"))
                     {
                         var data =
                         doc.QuerySelectorAll("body")
@@ -57,7 +57,7 @@ namespace CoverLetterApp.Services
                             Test.Add(newdata);
                         }
                     }
-                    else if(!doc.Url.Contains("prime") && doc.Url.Contains("vjs"))
+                    else if(doc.Url.Contains("vjs"))
                     {
                         var data =
                         doc.QuerySelectorAll("body")
