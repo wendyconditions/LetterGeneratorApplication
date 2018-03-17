@@ -24,17 +24,28 @@
        
 
         function _tagRemoved(tag) {
-            for (var key in vm.formInfo.exp) {
-                if (tag.text == key) {
-                    delete vm.formInfo.exp[key];
+            if (typeof vm.formInfo === 'undefined') {
+                console.log('consumed');
+            } else {
+                for (var key in vm.formInfo.exp) {
+
+                    if (tag.text == key) {
+                        delete vm.formInfo.exp[key];
+                    }
                 }
             }
-
+            
         }
 
         var counter = 0;
 
         function _resubmit(url) {
+            vm.dataLoading = {
+                message: "loading...",
+                load: false,
+                resub: true
+            };
+
             counter = counter + 30;
 
             var nextPageUrl = {
@@ -52,7 +63,8 @@
             if (res) {
                 vm.dataLoading = {
                     message: "loading...",
-                    load: true
+                    load: true,
+                    resub: false
                 };
 
                 coverLetterService.getJobData(url)
@@ -63,6 +75,7 @@
                 vm.dataLoading = {
                     message: "Invalid Url. Try again. Hint: Check if it's an Indeed.com Url",
                     load: true
+                    
                 };
             }
         }
@@ -71,6 +84,7 @@
         
         function _btnUrlSuccess(response) {
             vm.dataLoading.load = false;
+            vm.dataLoading.resub = false;
             var index = response.data.job;
 
             if (response.status === 204) {
