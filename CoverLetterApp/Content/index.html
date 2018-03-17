@@ -42,7 +42,8 @@
             <h1 class="text-center">Automate and enhance your job hunt</h1>
             <h4 class="text-center subhead">Clapp is a cover letter generator used directly with <a href="https://www.indeed.com/">Indeed.com</a></h4>
             <div class="text-center">
-                <button type="button" class="btn btn-lg btn-danger">Let's get started</button>
+                <button type="button" class="btn btn-lg btn-danger" ng-click="vm.scrollDown()">Let's get started</button>
+                
             </div>
         </div>
     </div>
@@ -72,10 +73,10 @@
                         <br />
 
                         <div class="form-group" ng-repeat="tag in tags">
-                            <label for="experience">Your Job Experience for {{tag}}: <em ng-if="$first">E.g. Over 5 yrs using html in production enviornment.</em></label>
+                            <label for="experience">Your Job Experience for <strong>{{tag}}</strong>: <em ng-if="$first">E.g. "Over 5 yrs using html in production enviornment."</em></label>
                             <input class="form-control" ng-model="vm.formInfo.exp[tag]" />
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="coverletter">Write out the body of your own cover letter:</label>
                             <textarea class="form-control" rows="10" ng-model="vm.formInfo.message"></textarea>
@@ -100,11 +101,11 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container-fluid letters" ng-if="vm.jobInfo.length">
         <h1 class="text-center wala">Walaaa - Cover letters galore!!!<br /></h1>
         <h4 class="text-center"><em>Showing {{vm.jobInfo.length | number}} Clapps</em>&nbsp;&nbsp;<img src="img/clapp_img.png" width="28px" height="28px" /></h4>
-        
+
         <br />
         <div class="text-center">
             <button class="btn btn-primary btn-lg" ng-click="vm.btnResubmit(vm.data)" ng-if="vm.jobInfo.length">{{vm.dataLoading.resub ? 'loading...' : 'Get more!'}}</button>
@@ -160,7 +161,6 @@
     <script src="js/module.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/service.js"></script>
-    <!--<script src="js/ng-tags-input.min.js"></script>-->
     <script src="js/ng-tags-input.js"></script>
 </body>
 </html>

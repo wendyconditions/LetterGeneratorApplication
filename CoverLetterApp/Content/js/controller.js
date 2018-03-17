@@ -12,6 +12,7 @@
         vm.data = {};
         vm.btnUrl = _btnUrl;
         vm.jobInfo = [];
+        vm.scrollDown = _scroll;
         vm.tagRemoved = _tagRemoved;
         vm.btnResubmit = _resubmit;
         vm.dataLoading = {
@@ -21,7 +22,10 @@
 
         ///////////////
 
-       
+        function _scroll() {
+            var position = $(".step").offset().top;
+            $("html, body").animate({ "scrollTop": position }, 1000);
+        }
 
         function _tagRemoved(tag) {
             if (typeof vm.formInfo === 'undefined') {
@@ -69,8 +73,6 @@
 
                 coverLetterService.getJobData(url)
                     .then(_btnUrlSuccess, _btnUrlError);
-
-                //vm.data = {}; // reset form
             } else {
                 vm.dataLoading = {
                     message: "Invalid Url. Try again. Hint: Check if it's an Indeed.com Url",
@@ -80,8 +82,6 @@
             }
         }
 
-
-        
         function _btnUrlSuccess(response) {
             vm.dataLoading.load = false;
             vm.dataLoading.resub = false;
