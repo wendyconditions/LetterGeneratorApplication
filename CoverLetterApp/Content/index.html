@@ -75,7 +75,9 @@
                         <div class="form-group" ng-repeat="tag in tags">
                             <label for="experience">Your Job Experience for <strong>{{tag}}</strong>: <em ng-if="$first">E.g. "Over 5 yrs using html in production enviornment."</em></label>
                             <input class="form-control" ng-model="vm.formInfo.exp[tag]" />
+                            <pre>{{vm.formInfo.exp | json}}</pre>
                         </div>
+                        
 
                         <div class="form-group">
                             <label for="coverletter">Write out the body of your own cover letter:</label>
@@ -95,7 +97,7 @@
                         <div ng-if="vm.dataLoading.load">
                             {{vm.dataLoading.message}}
                         </div>
-
+                        
                     </form>
                 </div>
             </div>

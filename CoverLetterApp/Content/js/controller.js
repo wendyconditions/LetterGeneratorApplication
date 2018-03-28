@@ -20,6 +20,7 @@
             load: false
         };
 
+        
         ///////////////
 
         function _scroll() {
@@ -38,7 +39,7 @@
                     }
                 }
             }
-            
+
         }
 
         var counter = 0;
@@ -64,6 +65,10 @@
             var patt = new RegExp("https://www.indeed.com/");
             var res = patt.test(url.url);
 
+            // check in vm.formInfo is undefined, then check if vm.formInfo.exp is undefined
+            // set vm.forminfo.exp to undefined if not found
+            console.log(vm.formInfo);
+
             if (res) {
                 vm.dataLoading = {
                     message: "loading...",
@@ -77,23 +82,26 @@
                 vm.dataLoading = {
                     message: "Invalid Url. Try again. Hint: Check if it's an Indeed.com Url",
                     load: true
-                    
+
                 };
             }
         }
 
+        //vm.formInfo.exp = undefined;
+
         function _btnUrlSuccess(response) {
             vm.dataLoading.load = false;
             vm.dataLoading.resub = false;
-            var index = response.data.job;
 
+            var index = response.data.job;
+            
             if (response.status === 204) {
                 vm.dataLoading = {
                     message: "Unfortunately, that Url did not produce suitable results. Try another Url search.",
                     load: true
                 };
                 return;
-            } else {
+            } else if (angular.isDefined(vm.formInfo.exp)) {
                 // matching key words with response
                 for (var key in vm.formInfo.exp) {
                     for (var i = 0; i < index.length; i++) {
@@ -115,6 +123,8 @@
                     vm.jobInfo.push(index[i]);
                 }
                 console.log(vm.jobInfo);
+            } else  {
+                console.log('testing mode');
             }
         }
 
