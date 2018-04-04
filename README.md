@@ -19,13 +19,13 @@ Pictures
 # Developer Stuff
 
 AngularJS
-C`#`
+CSharp
 No database
 
 ## Future Features
 
-* If no matching data with employer, generate basic coverletter template
-* Button to allow scraping more than 5 jobs (next 5 jobs)
+* ~~If no matching data with employer, generate basic coverletter template~~
+* ~~Button to allow scraping more than 5 jobs (next 5 jobs)~~
 * Alert Service
 * Might add database... maybe. If so, the following
   * Logger Service 
