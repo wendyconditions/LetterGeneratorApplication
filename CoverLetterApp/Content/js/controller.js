@@ -65,9 +65,9 @@
             var patt = new RegExp("https://www.indeed.com/");
             var res = patt.test(url.url);
 
-            // check in vm.formInfo is undefined, then check if vm.formInfo.exp is undefined
+            // check if vm.formInfo is undefined, then check if vm.formInfo.exp is undefined
             // set vm.forminfo.exp to undefined if not found
-            console.log(vm.formInfo);
+            //console.log(vm.formInfo);
 
             if (res) {
                 vm.dataLoading = {
@@ -122,7 +122,7 @@
                 for (var i = 0; i < index.length; i++) {
                     vm.jobInfo.push(index[i]);
                 }
-                console.log(vm.jobInfo);
+                //console.log(vm.jobInfo);
             } else  {
                 console.log('testing mode');
             }
