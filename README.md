@@ -30,3 +30,5 @@ No database
 * Might add database... maybe. If so, the following
   * Logger Service 
   * User Service
+* Allow user to not have Keywords, throws error if no keywords are input
+* WYSIWYG editor woooo! 
