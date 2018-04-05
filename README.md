@@ -7,9 +7,8 @@ Goal: Cover letters are a drag but now you can send every potential employer a g
 Reduces the time of personalizing every job application so you can focus on job hunting rather than getting hung up on a personalized letter.
 
 # How to
+![alt text](https://github.com/wendyconditions/LetterGeneratorApplication/img/step1.png)
 
-[logo]: https://github.com/wendyconditions/LetterGeneratorApplication/img/step1.png "Step 1"
-![alt text][logo]
 # Future Features
 
 * Copy to e-mail
