@@ -9,7 +9,7 @@ Reduces the time of personalizing every job application so you can focus on job 
 # How to
 
 [logo]: https://github.com/wendyconditions/LetterGeneratorApplication/img/step1.png "Step 1"
-
+![alt text][logo]
 # Future Features
 
 * Copy to e-mail
