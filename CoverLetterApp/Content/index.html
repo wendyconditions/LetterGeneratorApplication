@@ -43,7 +43,7 @@
             <h4 class="text-center subhead">Clapp is a cover letter generator used directly with <a href="https://www.indeed.com/">Indeed.com</a></h4>
             <div class="text-center">
                 <button type="button" class="btn btn-lg btn-danger" ng-click="vm.scrollDown()">Let's get started</button>
-                
+
             </div>
         </div>
     </div>
@@ -94,7 +94,7 @@
                         <div ng-if="vm.dataLoading.load">
                             {{vm.dataLoading.message}}
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -103,7 +103,7 @@
 
     <div class="container-fluid letters" ng-if="vm.jobInfo.length">
         <h1 class="text-center wala">Walaaa - Cover letters galore!!!<br /></h1>
-        <h4 class="text-center"><em>Showing {{vm.jobInfo.length | number}} Clapps</em>&nbsp;&nbsp;<img src="img/clapp_img.png" width="28px" height="28px" /></h4>
+        <h4 class="text-center"><em>Showing {{vm.jobInfo.length | number}} Clapps</em>&nbsp;&nbsp;<img src="img/clapp_img.png" width="28" height="28" /></h4>
 
         <br />
         <div class="text-center">
@@ -116,8 +116,8 @@
                     <p><strong>Greetings {{job.company}},</strong><p>
 
                     <p>In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.</p>
-                    {{vm.formInfo.message}}
 
+                    <p><span ng-bind-html="vm.formInfo.message | newlines"></span></p>
 
                     <!--Qualifications repeat-->
                     <table class="table table-bordered" ng-if="job.qualInfo.matches.length > 0">
@@ -157,6 +157,7 @@
     <script src="../Scripts/jquery-3.2.1.js"></script>
     <script src="../Scripts/bootstrap.js"></script>
     <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular-sanitize.min.js"></script>
     <script src="js/module.js"></script>
     <script src="js/controller.js"></script>
     <script src="js/service.js"></script>

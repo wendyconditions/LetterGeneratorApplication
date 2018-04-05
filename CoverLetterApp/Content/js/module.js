@@ -2,5 +2,5 @@
     "use strict";
 
     angular
-        .module("CoverLetterApp", ['ngTagsInput']);
+        .module("CoverLetterApp", ['ngTagsInput', 'ngSanitize']);
 })();
