@@ -7,7 +7,9 @@ Goal: Cover letters are a drag but now you can send every potential employer a g
 Reduces the time of personalizing every job application so you can focus on job hunting rather than getting hung up on a personalized letter.
 
 # How to
-![alt text](https://wendyconditions.github.io/LetterGeneratorApplication/img/step1.png)
+Copy and paste the indeed url from your job search and paste it into the Clapp form.
+
+![Copy Indeed Url](https://wendyconditions.github.io/LetterGeneratorApplication/img/step1.png)
 
 # Future Features
 
