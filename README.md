@@ -1,5 +1,5 @@
 # Clapp
-[Live demo](https://http://clapp.gear.host)
+[Live demo](https://clapp.gear.host)
 
 
 Clapp stands for CoverLetter App. A small web app to allow anyone to auto-generate a list of personalized cover letters by using their Dice.com job search.
