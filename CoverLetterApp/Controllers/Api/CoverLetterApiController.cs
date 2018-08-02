@@ -1,6 +1,5 @@
 ﻿using AngleSharp;
 using CoverLetterApp.Interfaces;
-using CoverLetterApp.Models.Requests;
 using CoverLetterApp.Models.Responses;
 using System;
 using System.Collections.Generic;
@@ -24,24 +23,34 @@ namespace CoverLetterApp.Controllers.Api
         }
 
         [Route(), HttpPost]
-        public async Task<HttpResponseMessage> GetAll(WebScrapeRequest model)
+        public async Task<HttpResponseMessage> GetAll(string url)
         {
             try
             {
-                var response = new WebScrapeResponse();
-                response.Job = await coverLetterService.GetAll(model);
-                if(response.Job.Count == 0)
+                // check if dice url
+                if (url.Contains("dice.com"))
                 {
-                    var data = string.Format("NoContent", model);
-                    return Request.CreateErrorResponse(HttpStatusCode.NoContent, data);
-                }
-                return Request.CreateResponse(HttpStatusCode.OK, response);
+                    List<JobInfo> JobInfo = new List<JobInfo>();
+                    JobInfo = await coverLetterService.GetAll(url);
 
+                    if (JobInfo == null)
+                    {
+                        var message = string.Format("No content found with the URL provided.");
+                        HttpError err = new HttpError(message);
+                        return Request.CreateResponse(HttpStatusCode.NoContent, err);
+                    }
+                    return Request.CreateResponse(HttpStatusCode.OK, JobInfo);
+                }
+                else
+                { 
+                    var message = string.Format("Not a Dice Url. Forbidden.");
+                    HttpError err = new HttpError(message);
+                    return Request.CreateResponse(HttpStatusCode.Forbidden, err);
+                }
             }
             catch (Exception ex)
             {
-                
-                throw ex;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
     }

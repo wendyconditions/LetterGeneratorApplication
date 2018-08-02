@@ -19,7 +19,7 @@
         function _getJobData(jobInfo) {
             var settings = {
                 method: "POST"
-                , data: jobInfo
+                , params: jobInfo
                 , url: "/api/coverletter"
             };
             return $http(settings);

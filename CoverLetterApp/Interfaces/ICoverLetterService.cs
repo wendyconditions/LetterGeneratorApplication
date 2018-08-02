@@ -1,5 +1,4 @@
-﻿using CoverLetterApp.Models.Requests;
-using CoverLetterApp.Models.Responses;
+﻿using CoverLetterApp.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace CoverLetterApp.Interfaces
 {
     public interface ICoverLetterService
     {
-        // This is the Reponse that will be the output, then running a method and passing that request
-        Task<List<JobInfo>> GetAll(WebScrapeRequest model);
+        // This is the Reponse that will be the output, then running a method and passing url
+        Task<List<JobInfo>> GetAll(string url);
     }
 }

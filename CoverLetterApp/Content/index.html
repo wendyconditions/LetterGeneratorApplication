@@ -40,9 +40,9 @@
     <div class="jumbotron d-flex align-items-center">
         <div class="container">
             <h1 class="text-center">Automate and enhance your job hunt</h1>
-            <h4 class="text-center subhead">Clapp is a cover letter generator used directly with <a href="https://www.indeed.com/" target="_blank">Indeed.com</a></h4>
+            <h4 class="text-center subhead">Clapp is a cover letter generator used directly with <a href="https://www.dice.com/" target="_blank">Dice.com</a></h4>
             <div class="text-center">
-                <button type="button" class="btn btn-lg btn-danger" ng-click="vm.scrollDown()">Let's get started</button>
+                <button type="button" class="btn btn-lg btn-danger" ng-click="vm.btnScroll()">Let's get started</button>
 
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h1>Step One</h1>
-                <h4>Head over to <a href="https://www.indeed.com/" target="_blank">Indeed.com</a> and enter a job search</h4>
+                <h4>Head over to <a href="https://www.dice.com/" target="_blank">Dice.com</a> and enter a job search</h4>
             </div>
         </div>
     </div>
@@ -64,8 +64,8 @@
                     <h4 class="text-center">Create your custom letter by filling out the form below</h4>
                     <form>
                         <div class="form-group">
-                            <label for="jobUrl">Cut and paste job search URL from Indeed:</label>
-                            <input class="form-control" ng-model="vm.data.url" placeholder="Sample: https://www.indeed.com/jobs?q=admin&l=Los+Angeles%2C+CA" />
+                            <label for="jobUrl">Cut and paste job search URL from Dice:</label>
+                            <input class="form-control" ng-model="vm.data.url" placeholder="Sample: https://www.dice.com/jobs?q=developer%26l=Monterey+Park%2C+CA" />
                         </div>
 
                         <label for="tags">Enter Keywords: <em>E.g. html, css, javascript, etc</em></label>
@@ -117,7 +117,7 @@
 
                     <p>In response to your job post regarding the {{job.title}} position in your company I am submitting my resume for your review.</p>
 
-                    <p><span ng-bind-html="vm.formInfo.message | newlines"></span></p>
+                    <p><span ng-bind-html="vm.formInfo.message | newLines"></span></p>
 
                     <!--Qualifications repeat-->
                     <table class="table table-bordered" ng-if="job.qualInfo.matches.length > 0">

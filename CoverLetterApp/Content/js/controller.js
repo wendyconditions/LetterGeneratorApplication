@@ -9,21 +9,21 @@
 
     function letterController(coverLetterService, $scope) {
         var vm = this;
+        var counter = 0;
         vm.data = {};
         vm.btnUrl = _btnUrl;
         vm.jobInfo = [];
-        vm.scrollDown = _scroll;
+        vm.btnScroll = _btnScroll;
         vm.tagRemoved = _tagRemoved;
         vm.btnResubmit = _resubmit;
         vm.dataLoading = {
             message: "",
             load: false
         };
-
         
         ///////////////
 
-        function _scroll() {
+        function _btnScroll() {
             var position = $(".step").offset().top;
             $("html, body").animate({ "scrollTop": position }, 1000);
         }
@@ -33,7 +33,6 @@
                 console.log('consumed');
             } else {
                 for (var key in vm.formInfo.exp) {
-
                     if (tag.text == key) {
                         delete vm.formInfo.exp[key];
                     }
@@ -41,8 +40,6 @@
             }
 
         }
-
-        var counter = 0;
 
         function _resubmit(url) {
             vm.dataLoading = {
@@ -62,7 +59,7 @@
         }
 
         function _btnUrl(url) {
-            var patt = new RegExp("https://www.indeed.com/");
+            var patt = new RegExp("https://www.dice.com/");
             var res = patt.test(url.url);
 
             // check if vm.formInfo is undefined, then check if vm.formInfo.exp is undefined
@@ -80,7 +77,7 @@
                     .then(_btnUrlSuccess, _btnUrlError);
             } else {
                 vm.dataLoading = {
-                    message: "Invalid Url. Try again. Hint: Check if it's an Indeed.com Url",
+                    message: "Invalid Url. Try again. Hint: Check if it's an Dice.com Url",
                     load: true
 
                 };
@@ -93,7 +90,7 @@
             vm.dataLoading.load = false;
             vm.dataLoading.resub = false;
 
-            var index = response.data.job;
+            var index = response.data;
             
             if (response.status === 204) {
                 vm.dataLoading = {
@@ -157,7 +154,7 @@
     "use strict";
     angular
         .module("CoverLetterApp")
-        .filter('newlines', function () {
+        .filter('newLines', function () {
             return function (text) {
                 return text.replace(/\n/g, '<br/>');
             }
