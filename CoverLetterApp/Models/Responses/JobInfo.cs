@@ -5,11 +5,6 @@ using System.Web;
 
 namespace CoverLetterApp.Models.Responses
 {
-    //public class JobData
-    //{
-    //    public List<JobInfo> JobInfo { get; set; }
-    //}
-
     public class JobInfo
     {
         public string Title { get; set; }

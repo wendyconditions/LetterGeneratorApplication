@@ -1,7 +1,7 @@
 using CoverLetterApp.Interfaces;
 using CoverLetterApp.Services;
-using Microsoft.Practices.Unity;
 using System.Web.Http;
+using Unity;
 using Unity.WebApi;
 
 namespace CoverLetterApp
@@ -17,7 +17,6 @@ namespace CoverLetterApp
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<ICoverLetterService, CoverLetterService>();
-            
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
     }

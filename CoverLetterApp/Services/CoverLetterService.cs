@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using AngleSharp.Extensions;
 
 namespace CoverLetterApp.Services
 {
@@ -43,12 +44,12 @@ namespace CoverLetterApp.Services
                         doc.QuerySelectorAll("body")
                         .Select(m => new JobInfo
                         {
-                            Title = m.QuerySelector(".jobtitle").TextContent,
-                            Company = m.QuerySelector(".company").TextContent,
-                            QualInfo = new QualInfo {
-                                Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList(),
+                            Title = m.QuerySelector(".jobsearch-JobInfoHeader-title").TextContent,
+                            Company = m.QuerySelector(".icl-u-lg-mr--sm").TextContent,
+                            QualInfo = new QualInfo
+                            {
+                                Quals = m.QuerySelectorAll("li").Select(node => node.Text()).ToList(),
                                 Matches = new string[0]
-
                             }
                         }).ToList();
 
@@ -61,21 +62,21 @@ namespace CoverLetterApp.Services
                             Test.Add(newdata);
                         }
                     }
-                    else if(doc.Url.Contains("vjs"))
+                    else if (doc.Url.Contains("vjs"))
                     {
                         var data =
-                       doc.QuerySelectorAll("body")
-                       .Select(m => new JobInfo
-                       {
-                           Title = m.QuerySelector(".jobtitle").TextContent,
-                           Company = m.QuerySelector(".company").TextContent,
-                           QualInfo = new QualInfo
-                           {
-                               Quals = m.QuerySelectorAll("li").Select(node => node.TextContent).ToList(),
-                               Matches = new string[0]
-                               
-                           }
-                       }).ToList();
+                        doc.QuerySelectorAll("body")
+                        .Select(m => new JobInfo
+                        {
+                            Title = m.QuerySelector(".jobsearch-JobInfoHeader-title").TextContent,
+                            Company = m.QuerySelector(".icl-u-lg-mr--sm").TextContent,
+                            QualInfo = new QualInfo
+                            {
+                                Quals = m.QuerySelectorAll("li").Select(node => node.Text()).ToList(),
+                                Matches = new string[0]
+                            }
+                        }).ToList();
+
 
                         foreach (var sub in data)
                         {
@@ -93,13 +94,9 @@ namespace CoverLetterApp.Services
                 }
                 catch (Exception e)
                 {
-
                     throw e;
                 }
-
-
             }
-
             return Test;
         }
     }

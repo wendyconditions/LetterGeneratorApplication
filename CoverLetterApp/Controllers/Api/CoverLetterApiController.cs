@@ -23,7 +23,7 @@ namespace CoverLetterApp.Controllers.Api
             this.coverLetterService = coverLetterService;
         }
 
-        [Route("job"), HttpPost]
+        [Route(), HttpPost]
         public async Task<HttpResponseMessage> GetAll(WebScrapeRequest model)
         {
             try
@@ -43,19 +43,6 @@ namespace CoverLetterApp.Controllers.Api
                 
                 throw ex;
             }
-            
-            //catch (Exception ex)
-            //{
-            //    if(ex == null)
-            //    {
-            //        return Request.CreateErrorResponse(HttpStatusCode.NoContent, ex);
-            //    } 
-            //}
-            //finally
-            //{
-            //    throw new Exception();
-            //}
-
         }
     }
 }
