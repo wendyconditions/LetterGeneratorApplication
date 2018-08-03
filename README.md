@@ -21,9 +21,9 @@ Copy and paste the dice url from your job search and paste it into the Clapp for
 
 # Developer Stuff
 
-AngularJS
-C#
-No database
+- AngularJS
+- ASP.NET
+- No database
 
 ## Future Features
 
