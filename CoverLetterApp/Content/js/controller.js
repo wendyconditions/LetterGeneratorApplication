@@ -9,7 +9,7 @@
 
     function letterController(coverLetterService, $scope) {
         var vm = this;
-        var counter = 0;
+        var counter = 1;
         vm.data = {};
         vm.btnUrl = _btnUrl;
         vm.jobInfo = [];
@@ -41,27 +41,58 @@
 
         }
 
-        function _resubmit(url) {
+        function _resubmit(data) {
             vm.dataLoading = {
                 message: "loading...",
                 load: false,
                 resub: true
             };
 
-            counter = counter + 30;
+            // increase counter
+            counter++
 
-            var nextPageUrl = {
-                url: url.url + "&start=" + counter
+            // create link
+            var url = document.createElement('a');
+            url.href = data.url;
+
+            // gather pieces
+            var search = url.search;
+            var origin = url.origin;
+            var pathname = url.pathname;
+
+            // generate search query
+            var searchString = generateSearchString(search);
+
+            // get new url
+            var newUrl = gnerateNewUrl(origin, pathname, searchString, counter);
+
+            // create object
+            var obj = {
+                url: newUrl
             }
-
-            coverLetterService.getJobData(nextPageUrl)
+            // send url to service
+            coverLetterService.getJobData(obj)
                 .then(_btnUrlSuccess, _btnUrlError);
         }
+
+        function generateSearchString(url) {
+            var newSearch = url.replace(/[=&]/g, '-')
+                .replace(/[+]/g, '_')
+                .replace(/[?]/g, '');
+            return newSearch;
+        }
+
+        function gnerateNewUrl(origin, pathname, searchString, counter) {
+            var createUrl = origin + pathname + '/' + searchString + "-radius-30-startPage-" + counter + "-jobs";
+            return createUrl;
+        }
+
 
         function _btnUrl(url) {
             var patt = new RegExp("https://www.dice.com/");
             var res = patt.test(url.url);
 
+            // reuse this submit for re-submit
             // check if vm.formInfo is undefined, then check if vm.formInfo.exp is undefined
             // set vm.forminfo.exp to undefined if not found
             //console.log(vm.formInfo);
@@ -79,7 +110,6 @@
                 vm.dataLoading = {
                     message: "Invalid Url. Try again. Hint: Check if it's an Dice.com Url",
                     load: true
-
                 };
             }
         }
@@ -126,10 +156,11 @@
         }
 
         function _btnUrlError(e) {
+            // 500 expected
             console.log(e);
 
             vm.dataLoading = {
-                message: "It's not you, it's me! There's an error on my side. Let me work on that. Please come back soon and try again.", //error when program throws an error object reference, error on MY part, not the user",
+                message: "It's not you, it's me! There's an error on my side. Let me work on that. Please come back soon and try again.",
                 load: true
             };
         }
