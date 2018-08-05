@@ -29,16 +29,14 @@
         }
 
         function _tagRemoved(tag) {
-            if (typeof vm.formInfo === 'undefined') {
-                console.log('consumed');
-            } else {
+            // Needed to remove tag description when tag is deleted by user
+            if (typeof vm.formInfo != 'undefined') {
                 for (var key in vm.formInfo.exp) {
                     if (tag.text == key) {
                         delete vm.formInfo.exp[key];
                     }
                 }
-            }
-
+            } 
         }
 
         function _resubmit(data) {
