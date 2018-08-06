@@ -955,6 +955,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICoverLetterService.cs" />
+    <Compile Include="Models\Responses\CreateResponse.cs" />
     <Compile Include="Models\Responses\JobInfo.cs" />
     <Compile Include="Models\Responses\UrlContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
