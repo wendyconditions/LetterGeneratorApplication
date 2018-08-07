@@ -1,16 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
     <title>Clapp - Cover Letter App</title>
-    <link rel="icon" href="img/favicon-clapp.png">
-    <!--<link href="css/bootstrap.css" rel="stylesheet" />-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link href="css/ng-tags-input.min.css" rel="stylesheet" />
-    <link href="css/ng-tags-input.bootstrap.min.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="description" content="A cover letter generator that allows anyone to auto-generate a list of personalized cover letters by using their online job search" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Clapp - Cover Letter App" />
+    <meta property="og:description" content="A cover letter generator that allows anyone to auto-generate a list of personalized cover letters by using their online job search" />
+    <meta property="og:site_name" content="Clapp - Cover Letter App" />
+    <meta property="og:url" content="http://clapp.gear.host/" />
+    <meta property="og:image" content="http://clapp.gear.host/content/img/clapp_header.png" />
+    <meta property="og:image:secure_url" content="https://clapp.gear.host/content/img/clapp_header.png" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <link href="css/ng-tags-input.min.css" rel="stylesheet" />
+    <link href="css/ng-tags-input.bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="img/favicon-clapp.png">
 </head>
 <body ng-app="CoverLetterApp" ng-controller="letterController as vm">
     <div class="container">
@@ -31,9 +39,6 @@
                         <a class="nav-link" href="https://github.com/wendyconditions/LetterGeneratorApplication">Help</a>
                     </li>
                 </ul>
-                <!--<span class="navbar-text">
-                    Navbar text with an inline element
-                </span>-->
             </div>
         </nav>
     </div>
@@ -43,7 +48,6 @@
             <h4 class="text-center subhead">Clapp is a cover letter generator used directly with <a href="https://www.dice.com/" target="_blank">Dice.com</a></h4>
             <div class="text-center">
                 <button type="button" class="btn btn-lg btn-danger" ng-click="vm.btnScroll()">Let's get started</button>
-
             </div>
         </div>
     </div>
@@ -55,7 +59,6 @@
             </div>
         </div>
     </div>
-
     <div class="container-fluid gen">
         <div class="row">
             <div class="col-sm-12">
@@ -70,7 +73,7 @@
 
                         <label for="tags">Enter Keywords: <em>E.g. html, css, javascript, etc</em></label>
                         <tags-input ng-model="tags" use-strings="true" on-tag-removed="vm.tagRemoved($tag)" replace-spaces-with-dashes="false"></tags-input>
-                        <br /
+                        <br />
                         <div class="form-group" ng-repeat="tag in tags">
                             <label for="experience">Your Job Experience for <strong>{{tag}}</strong>: <em ng-if="$first">E.g. "Over 5 yrs using html in production enviornment."</em></label>
                             <input class="form-control" ng-model="vm.formInfo.exp[tag]" />
@@ -93,7 +96,6 @@
                         <div ng-if="vm.dataLoading.load">
                             {{vm.dataLoading.message}}
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -154,6 +156,7 @@
 
     <!--Scripts-->
     <script src="../Scripts/jquery-3.2.1.js"></script>
+    <script src="../Scripts/tether.min.js"></script>
     <script src="../Scripts/bootstrap.js"></script>
     <script src="../Scripts/angular.js"></script>
     <script src="../Scripts/angular-sanitize.min.js"></script>

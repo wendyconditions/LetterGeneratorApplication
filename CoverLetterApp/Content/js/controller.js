@@ -89,7 +89,7 @@
         function _btnUrl(url) {
             var patt = new RegExp("https://www.dice.com/");
             var res = patt.test(url.url);
-
+            
             // reuse this submit for re-submit
             // check if vm.formInfo is undefined, then check if vm.formInfo.exp is undefined
             // set vm.forminfo.exp to undefined if not found
