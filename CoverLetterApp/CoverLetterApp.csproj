@@ -126,7 +126,6 @@
     <Content Include="Content\css\ng-tags-input.bootstrap.min.css" />
     <Content Include="Content\css\ng-tags-input.min.css" />
     <Content Include="Content\css\style.css" />
-    <Content Include="Content\homepage.html" />
     <Content Include="Content\img\favicon-clapp.png" />
     <Content Include="Content\index.html" />
     <Content Include="Content\js\controller.js" />

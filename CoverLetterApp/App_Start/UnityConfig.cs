@@ -14,7 +14,6 @@ namespace CoverLetterApp
 
             // register all your components with the container here
             // it is NOT necessary to register your controllers
-
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<ICoverLetterService, CoverLetterService>();
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
