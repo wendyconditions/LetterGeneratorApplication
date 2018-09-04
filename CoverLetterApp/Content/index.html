@@ -105,7 +105,7 @@
     <div class="container-fluid letters" ng-if="vm.jobInfo.length">
         <h1 class="text-center wala">Walaaa - Cover letters galore!!!<br /></h1>
         <h4 class="text-center"><em>Showing {{vm.jobInfo.length | number}} Clapps</em>&nbsp;&nbsp;<img src="img/clapp_img.png" width="28" height="28" /></h4>
-
+        <p class="text-danger text-center" ng-if="vm.dataLoading.resubError">{{vm.dataLoading.resubErrorMessage}}</p>
         <br />
         <div class="text-center">
             <button class="btn btn-primary btn-lg" ng-click="vm.btnResubmit(vm.data)" ng-if="vm.jobInfo.length">{{vm.dataLoading.resub ? 'loading...' : 'Get more!'}}</button>
@@ -148,6 +148,7 @@
             </div>
         </div>
     </div>
+    <p class="text-danger text-center" ng-if="vm.dataLoading.resubError">{{vm.dataLoading.resubErrorMessage}}</p>
     <button class="btn btn-primary btn-block btn-lg" ng-click="vm.btnResubmit(vm.data)" ng-if="vm.jobInfo.length">{{vm.dataLoading.resub ? 'loading...' : 'Get more!'}}</button>
 
     <div class="container-fluid footer text-center">

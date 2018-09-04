@@ -47,7 +47,7 @@
             };
 
             // increase counter
-            counter++
+            counter++;
 
             // create link
             var url = document.createElement('a');
@@ -67,7 +67,7 @@
             // create object
             var obj = {
                 url: newUrl
-            }
+            };
             // send url to service
             coverLetterService.getJobData(obj)
                 .then(_btnUrlSuccess, _btnUrlError);
@@ -121,10 +121,17 @@
             var index = response.data;
             
             if (response.status === 204) {
-                vm.dataLoading = {
-                    message: "Unfortunately, that Url did not produce suitable results. Try another Url search.",
-                    load: true
-                };
+                if (counter > 0) {
+                    vm.dataLoading = {
+                        resubErrorMessage: "Damn, Dice may have restricted the amount of scraping we're allowed to do. Sorry for the inconvenience.",
+                        resubError: true
+                    };
+                } else {
+                    vm.dataLoading = {
+                        message: "Unfortunately, that Url did not produce suitable results. Try another Url search.",
+                        load: true
+                    };
+                }
                 return;
             } else if (angular.isDefined(vm.formInfo.exp)) {
                 // matching key words with response
