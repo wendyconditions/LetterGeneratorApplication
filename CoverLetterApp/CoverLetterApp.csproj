@@ -129,8 +129,8 @@
     <Content Include="Content\index.html" />
     <Content Include="Content\js\controller.js" />
     <Content Include="Content\js\module.js" />
-    <Content Include="Content\js\ng-tags-input.js" />
-    <Content Include="Content\js\ng-tags-input.min.js" />
+    <Content Include="Scripts\ng-tags-input.js" />
+    <Content Include="Scripts\ng-tags-input.min.js" />
     <Content Include="Content\js\service.js" />
     <Content Include="Content\tether\tether-theme-arrows-dark.css" />
     <Content Include="Content\tether\tether-theme-arrows-dark.min.css" />
