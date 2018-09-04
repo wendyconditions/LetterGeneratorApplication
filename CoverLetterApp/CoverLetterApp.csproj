@@ -114,11 +114,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\bootstrap-grid.css" />
-    <Content Include="Content\css\bootstrap-grid.min.css" />
-    <Content Include="Content\css\bootstrap-reboot.css" />
-    <Content Include="Content\css\bootstrap-reboot.min.css" />
-    <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\img\clapp_header.png" />
     <Content Include="Content\img\clapp_img.png" />
@@ -167,12 +162,6 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Content\css\bootstrap.min.css.map" />
-    <Content Include="Content\css\bootstrap.css.map" />
-    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\css\bootstrap-reboot.css.map" />
-    <Content Include="Content\css\bootstrap-grid.min.css.map" />
-    <Content Include="Content\css\bootstrap-grid.css.map" />
     <None Include="Properties\PublishProfiles\clapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\clapp - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
