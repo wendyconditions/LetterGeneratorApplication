@@ -11,7 +11,7 @@ Reduces the time of personalizing every job application so you can focus on job 
 # How to
 Copy and paste the dice url from your job search and paste it into the Clapp form.
 
-![Copy Dice Url](https://wendyconditions.github.io/LetterGeneratorApplication/img/dice_step1.gif)
+![Copy Dice Url](https://wendyconditions.github.io/clapp-app/img/dice_step1.gif)
 
 # Future Features
 
