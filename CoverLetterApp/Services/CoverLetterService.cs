@@ -18,7 +18,7 @@ namespace CoverLetterApp.Services
             // Get urls to scrape
             UrlContainer UrlContainer = await GetUrlContainer(url);
 
-            if(UrlContainer.Urls.Count == 0)
+            if(UrlContainer.Urls.Count < 1)
             {
                 return null;
             }
@@ -82,7 +82,7 @@ namespace CoverLetterApp.Services
                 }
                 catch (Exception e)
                 {
-                    throw e;
+                    throw;
                 }
             }
             return JobInfo;

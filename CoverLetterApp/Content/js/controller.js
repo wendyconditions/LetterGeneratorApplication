@@ -5,9 +5,9 @@
         .module("CoverLetterApp")
         .controller("letterController", letterController);
 
-    letterController.$inject = ["coverLetterService", "$scope"];
+    letterController.$inject = ["coverLetterService"];
 
-    function letterController(coverLetterService, $scope) {
+    function letterController(coverLetterService) {
         var vm = this;
         var counter = 1;
         vm.data = {};
