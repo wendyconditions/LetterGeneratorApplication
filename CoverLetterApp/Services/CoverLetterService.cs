@@ -16,49 +16,44 @@ namespace CoverLetterApp.Services
         public async Task<List<JobInfo>> GetAll(string url)
         {
             // Get urls to scrape
-            UrlContainer UrlContainer = await GetUrlContainer(url);
+            List<string> UrlContainer = await GetUrlContainer(url);
 
-            if(UrlContainer.Urls.Count < 1)
+            if (UrlContainer.Count < 1)
             {
                 return null;
             }
 
-            // Results from scraping individal pages
+            // Results from scraping individal result pages
             List<JobInfo> JobInfo = await GetJobData(UrlContainer);
 
             return JobInfo;
         }
 
-        public async Task<UrlContainer> GetUrlContainer(string url)
+        public async Task<List<string>> GetUrlContainer(string url)
         {
             var config = Configuration.Default.WithDefaultLoader();
-            string address = url;
-            var document = await BrowsingContext.New(config).OpenAsync(address);
+            var document = await BrowsingContext.New(config).OpenAsync(url);
+            int limit = 15;
 
-            var urls =
+            return
                 document.QuerySelectorAll("body")
-                .Select(m => new UrlContainer
-                {
-                    Urls =
+                .Select(m =>
                          m.QuerySelectorAll("a")
                          .Where(a => a.ClassList.Contains("dice-btn-link") && a.Id.Contains("position"))
                          .Select(a => a.GetAttribute("href"))
-                         .Take(15)
-                         .ToList()
-                }).FirstOrDefault();
-
-            return urls;
+                         .Take(limit)
+                         .ToList())
+                         .FirstOrDefault();
         }
 
-        public async Task<List<JobInfo>> GetJobData(UrlContainer urlContainer)
+        public async Task<List<JobInfo>> GetJobData(List<string> urlContainer)
         {
             List<JobInfo> JobInfo = null;
             var config = Configuration.Default.WithDefaultLoader();
-            
-            foreach (var item in urlContainer.Urls)
+
+            foreach (var url in urlContainer)
             {
-                string newAddress = item;
-                var doc = await BrowsingContext.New(config).OpenAsync("https://www.dice.com" + newAddress);
+                var doc = await BrowsingContext.New(config).OpenAsync("https://www.dice.com" + url);
 
                 try
                 {
@@ -82,7 +77,7 @@ namespace CoverLetterApp.Services
                 }
                 catch (Exception e)
                 {
-                    throw;
+                    throw e;
                 }
             }
             return JobInfo;
